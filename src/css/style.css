@@ -7112,119 +7112,26 @@ animation: contact-loading-spin 1s linear infinite;
 100% { transform: rotate(360deg); }
 }
 
-/* ===== CORRECCIONES DE ESPACIADO PARA MÓVIL - SIN AFECTAR EFECTOS ===== */
+/* ===== CORRECCIÓN CRÍTICA PARA VISIBILIDAD DE SECCIONES EN MÓVIL ===== */
 
+/* Asegurar que todas las secciones sean visibles en móvil */
 @media (width <= 1023px) {
-/* Reducir SOLO el padding del hero, manteniendo efectos */
-.hero {
-padding-top: calc(var(--navbar-height-mobile) + var(--space-xl)) !important;
-padding-bottom: var(--space-xl) !important;
-/* Mantener todos los efectos de fondo */
-}
-
-/* Reducir espaciado interno del hero sin afectar efectos de fondo */
-.hero__badge {
-margin-bottom: var(--space-md) !important;
-}
-
-.hero__title {
-margin-bottom: var(--space-md) !important;
-}
-
-.hero__company-description {
-padding: var(--space-md) !important;
-margin-bottom: var(--space-md) !important;
-}
-
-.hero__subtitle {
-margin-bottom: var(--space-md) !important;
-}
-
-.hero__cta-group {
-gap: var(--space-sm) !important;
-margin-bottom: var(--space-md) !important;
-}
-
-/* Reducir padding de secciones manteniendo efectos */
-.features {
-padding: var(--space-3xl) var(--section-padding-x) var(--space-2xl) !important;
-/* Mantener ::before y ::after para efectos */
-}
-
-.videos {
-padding: var(--space-3xl) var(--section-padding-x) var(--space-2xl) !important;
-/* Mantener ::before y ::after para efectos */
-}
-
-.faq {
-padding: var(--space-3xl) var(--section-padding-x) var(--space-2xl) !important;
-/* Mantener ::before y ::after para efectos */
-}
-
+/* Resetear cualquier problema de z-index o posicionamiento */
+.hero,
+.features,
+.videos,
+.faq,
 .contact {
-padding: var(--space-3xl) var(--section-padding-x) var(--space-xl) !important;
-/* Mantener ::before y ::after para efectos */
+position: relative !important;
+z-index: auto !important;
+display: block !important;
+visibility: visible !important;
+opacity: 1 !important;
+width: 100% !important;
+overflow: visible !important;
 }
 
-/* Reducir espaciado en headers manteniendo animaciones */
-.features__header {
-margin-bottom: var(--space-2xl) !important;
-}
-
-.videos__header {
-margin-bottom: var(--space-2xl) !important;
-}
-
-.faq__header {
-margin-bottom: var(--space-2xl) !important;
-}
-
-.contact__header {
-margin-bottom: var(--space-2xl) !important;
-}
-
-/* Reducir gaps en grids */
-.features__grid {
-gap: var(--space-2xl) !important;
-}
-
-.contact__grid {
-gap: var(--space-lg) !important;
-}
-
-/* Ajustar elementos individuales */
-.feature {
-padding: var(--space-lg) 0 !important;
-gap: var(--space-lg) !important;
-}
-
-.videos__main-container {
-margin-bottom: var(--space-2xl) !important;
-}
-
-.videos__player-container {
-padding: var(--space-lg) !important;
-}
-
-.faq__search-container {
-margin-bottom: var(--space-lg) !important;
-}
-
-.faq__list {
-gap: var(--space-sm) !important;
-}
-
-.contact__footer {
-padding: var(--space-2xl) 0 var(--space-lg) 0 !important;
-margin-top: var(--space-lg) !important;
-}
-
-/* CORRECCIÓN CRÍTICA: Asegurar scroll suave */
-html {
-scroll-behavior: smooth !important;
-overflow-x: hidden !important;
-}
-
+/* Asegurar que el body permita scroll */
 body {
 overflow-x: hidden !important;
 overflow-y: auto !important;
@@ -7338,10 +7245,6 @@ max-width: 100% !important;
 }
 
 /* ===== MANTENER TODOS LOS EFECTOS DE FONDO INTACTOS ===== */
-@media (width <= 1023px) {
-/* NO tocar estos efectos - solo confirmar que están activos */
-/* Mantener todas las animaciones y efectos para .hero y sus elementos en móvil */
-
 
 /* Solo reducir la intensidad de blur en móvil para mejor rendimiento */
 .hero .floating-orb-1,
@@ -7353,4 +7256,4 @@ filter: blur(20px) !important;
 .contact__orb {
 filter: blur(40px) !important;
 }
-}
+
