@@ -1,4 +1,4 @@
-// ===== VARIABLES GLOBALES OPTIMIZADAS PARA MÓVIL =====
+// ===== VARIABLES GLOBALES ULTRA-OPTIMIZADAS =====
 let isMenuOpen = false;
 let currentFeature = 0;
 const features = document.querySelectorAll('.feature');
@@ -20,33 +20,60 @@ let isMobile = window.innerWidth <= 1023;
 let isReducedMotion = false;
 let performanceMode = false;
 
-// ===== CONFIGURACIÓN GLOBAL OPTIMIZADA =====
+// ===== CONFIGURACIÓN GLOBAL ULTRA-OPTIMIZADA =====
 const CONFIG = {
-    ANIMATION_DURATION: isMobile ? 200 : 300,
-    SCROLL_THRESHOLD: isMobile ? 5 : 10,
-    IMAGE_FORMATS: ['avif', 'webp', 'jpg', 'png'],
+    // Configuración de animaciones ultra-optimizada
+    ANIMATION_DURATION: isMobile ? 200 : 400,
+    SCROLL_THRESHOLD: isMobile ? 30 : 50,
+    
+    // Configuración de imágenes optimizadas
+    IMAGE_FORMATS: {
+        AVIF: 'image/avif',
+        WEBP: 'image/webp',
+        JPEG: 'image/jpeg',
+        PNG: 'image/png'
+    },
+    
+    // Rutas de imágenes optimizadas
     IMAGE_PATHS: {
-        hero: './assets/phones/Hero',
-        logo: './assets/logo',
+        hero: {
+            avif: './assets/phones/Hero.avif'
+        },
+        logo: {
+            avif: './assets/logo.avif'
+        },
         phones: {
-            horario: './assets/phones/Horario',
-            estaciones: './assets/phones/Estaciones',
-            calendario: './assets/phones/Calendario',
-            registro: './assets/phones/Registro',
-            notificaciones: './assets/phones/Notificaciones',
-            referidos: './assets/phones/Referidos'
+            horario: {
+                avif: './assets/phones/Horario.avif'
+            },
+            estaciones: {
+                avif: './assets/phones/Estaciones.avif'
+            },
+            calendario: {
+                avif: './assets/phones/Calendario.avif'
+            },
+            registro: {
+                avif: './assets/phones/Registro.avif'
+            },
+            notificaciones: {
+                avif: './assets/phones/Notificaciones.avif'
+            },
+            referidos: {
+                avif: './assets/phones/Referidos.avif'
+            }
         },
         downloads: {
-            apple: './assets/AppleStore.png',
-            google: './assets/GooglePlay.png'
+            apple: {
+                png: './assets/AppleStore.png'
+            },
+            google: {
+                png: './assets/GooglePlay.png'
+            }
         }
     }
 };
 
-// ===== OPTIMIZADOR DE IMÁGENES ULTRA-AVANZADO =====
-let imageOptimizer;
-
-// ===== DATOS DE TRADUCCIÓN COMPLETOS =====
+// ===== SISTEMA DE TRADUCCIONES OPTIMIZADO =====
 const translationData = {
     es: {
         // Meta tags
@@ -81,7 +108,7 @@ const translationData = {
         'features-subtitle': 'Descubre todas las funcionalidades que StarFlex te ofrece para maximizar tus ganancias.',
         // Feature 1: Horario
         'feature-schedule-title': 'HORARIO',
-        'feature-schedule-description': 'Elige los días y horarios que prefieres para tus bloques de entrega. Configura tu disponibilidad de manera inteligente y deja que StarFlex encuentre los mejores bloques en tus horarios preferidos.',
+        'feature-schedule-description': 'Elige los días y horarios que prefieras para tus bloques de entrega. Configura tu disponibilidad de manera inteligente y deja que StarFlex encuentre los mejores bloques en tus horarios preferidos.',
         'feature-schedule-item-1': 'Configuración personalizada por día de la semana',
         'feature-schedule-item-2': 'Horarios flexibles adaptados a tu estilo de vida',
         'feature-schedule-item-3': 'Optimización automática de turnos rentables',
@@ -89,24 +116,24 @@ const translationData = {
         'feature-schedule-item-5': 'Alertas de disponibilidad en tiempo real',
         // Feature 2: Estaciones
         'feature-stations-title': 'ESTACIONES',
-        'feature-stations-description': 'Selecciona tus estaciones preferidas y configura precios mínimos para que nuestra aplicación pueda ofrecerte automáticamente bloques que se ajusten perfectamente a tus preferencias y ubicación.',
+        'feature-stations-description': 'Selecciona tus estaciones preferidas y configura precios mínimos para que nuestra aplicación pueda ofrecerte automáticamente los bloques que se ajusten perfectamente a tus preferencias y ubicación.',
         'feature-stations-item-1': 'Selección personalizada de estaciones favoritas',
-        'feature-stations-item-2': 'Configuración de precio mínimo por estación',
+        'feature-stations-item-2': 'Configuración de precios mínimos por estación',
         'feature-stations-item-3': 'Análisis detallado de rentabilidad por ubicación',
         'feature-stations-item-4': 'Notificaciones instantáneas de bloques disponibles',
         'feature-stations-item-5': 'Mapa interactivo con todas las estaciones cercanas',
         'feature-stations-item-6': 'Filtros avanzados por distancia y tipo de entrega',
         // Feature 3: Calendario
         'feature-calendar-title': 'CALENDARIO',
-        'feature-calendar-description': 'En el calendario puedes ver todos tus bloques aceptados y acceder a funciones avanzadas como identificación desde cualquier ubicación, opción de saltar selfie y cancelación rápida de bloques, todo centralizado para tu máxima comodidad.',
+        'feature-calendar-description': 'En el calendario podrás ver todos tus bloques aceptados y acceder a funciones avanzadas como identificación desde cualquier ubicación, opción de saltar la selfie y cancelación rápida de bloques, todo centralizado para tu máxima comodidad.',
         'feature-calendar-item-1': 'Identificación automática desde cualquier ubicación',
-        'feature-calendar-item-2': 'Opción inteligente de saltar verificación de selfie',
+        'feature-calendar-item-2': 'Opción inteligente para saltar verificación selfie',
         'feature-calendar-item-3': 'Cancelación rápida y segura de bloques',
         'feature-calendar-item-4': 'Vista mensual y semanal de tus entregas',
         'feature-calendar-item-5': 'Recordatorios automáticos de bloques próximos',
-        // Feature 4: Log
-        'feature-log-title': 'LOG',
-        'feature-log-description': 'En el log detallado puedes ver todos los bloques disponibles y el motivo específico por el cual algunos fueron ignorados. Esta información te ayudará a ajustar tus filtros y preferencias para optimizar continuamente tus opciones de entrega.',
+        // Feature 4: Registro
+        'feature-log-title': 'REGISTRO',
+        'feature-log-description': 'En el registro detallado podrás ver todos los bloques disponibles y el motivo específico por el cual algunos fueron ignorados. Esta información te ayudará a ajustar tus filtros y preferencias para optimizar continuamente tus opciones de entrega.',
         'feature-log-item-1': 'Historial completo y detallado de todos los bloques',
         'feature-log-item-2': 'Motivos específicos y detallados de rechazo automático',
         'feature-log-item-3': 'Herramientas de optimización de filtros inteligentes',
@@ -141,20 +168,19 @@ const translationData = {
         'video-info-title': 'StarFlex Demo Completo',
         'video-info-description': 'Observa cómo StarFlex automatiza completamente tu experiencia con Amazon Flex. Desde la configuración inicial hasta la captura automática de bloques.',
         'videos-cta-title': '¿Listo para Transformar tus Ganancias?',
-        'videos-cta-subtitle': 'Únete a miles de conductores que ya están maximizando sus ingresos',
-        'videos-cta-btn': 'COMENZAR PRUEBA GRATUITA',
-        'videos-cta-trial': '3 días completamente gratis',
-        'videos-demo-btn': 'VER DEMO PERSONALIZADA',
+        'videos-cta-description': 'Únete a más de 15,000 conductores que ya están maximizando sus ingresos con StarFlex',
+        'videos-cta-start': 'COMENZAR AHORA',
+        'videos-cta-trial': '3 días gratis',
+        'videos-cta-demo': 'VER DEMO PERSONALIZADA',
         // FAQ Section
-        'faq-badge': 'Preguntas Frecuentes',
-        'faq-title': 'TODO LO QUE NECESITAS SABER',
-        'faq-subtitle': 'Resolvemos todas tus dudas sobre StarFlex y cómo puede transformar tu experiencia con Amazon Flex.',
+        'faq-title': 'Preguntas Frecuentes',
+        'faq-subtitle': 'Encuentra respuestas claras a las dudas más comunes sobre StarFlex y descubre cómo transformar tu experiencia con Amazon Flex.',
         'faq-search-placeholder': 'Buscar pregunta...',
-        'faq-1-question': '¿Cómo funciona StarFlex exactamente?',
-        'faq-1-answer': 'StarFlex utiliza <span class="faq__answer-highlight">tecnología de automatización avanzada</span> que monitorea constantemente la aplicación de Amazon Flex en busca de bloques que coincidan con tus preferencias configuradas. Cuando encuentra un bloque que cumple tus criterios de horario, ubicación y precio mínimo, lo acepta automáticamente por ti.',
-        'faq-2-question': '¿Es seguro usar StarFlex? ¿Puede afectar mi cuenta de Amazon Flex?',
-        'faq-2-answer': 'Sí, StarFlex es completamente seguro. Utilizamos <span class="faq__answer-highlight">protocolos de seguridad de nivel empresarial</span> y técnicas de automatización que simulan el comportamiento humano natural. Miles de conductores han usado StarFlex durante años sin ningún problema con sus cuentas de Amazon Flex.',
-        'faq-3-question': '¿StarFlex puede ser detectado por Amazon?',
+        'faq-1-question': '¿Cuáles son los principales beneficios de utilizar StarFlex?',
+        'faq-1-answer': 'StarFlex está diseñado para <span class="faq__answer-highlight">eliminar la conducción distraída</span> mediante automatización inteligente. Te permite concentrarte completamente en la conducción segura mientras nuestro sistema trabaja para encontrar los mejores bloques. Con StarFlex, no necesitas revisar constantemente tu teléfono, garantizando una experiencia más segura y eficiente que te permite maximizar tus ganancias.',
+        'faq-2-question': '¿StarFlex puede resolver automáticamente los CAPTCHA?',
+        'faq-2-answer': 'Sí, StarFlex incluye <span class="faq__answer-highlight">tecnología avanzada para resolver CAPTCHA automáticamente</span>. Nuestro sistema utiliza algoritmos inteligentes que pueden interpretar y resolver diferentes tipos de verificaciones, permitiendo una navegación fluida sin interrupciones manuales. Esto optimiza tu tiempo y hace que tu experiencia diaria sea más eficiente.',
+        'faq-3-question': '¿Es seguro usar StarFlex? ¿Amazon puede detectarlo?',
         'faq-3-answer': 'StarFlex utiliza <span class="faq__answer-highlight">tecnología avanzada de simulación humana</span> que incluye patrones de comportamiento naturales, tiempos de respuesta variables y gestos táctiles realistas. Nuestro enfoque se centra en ayudar a los conductores a brindar un mejor servicio a Amazon y sus clientes, asegurando entregas eficientes y de alta calidad.',
         'faq-4-question': '¿StarFlex funciona en iPhone y Android?',
         'faq-4-answer': 'Sí, StarFlex está disponible para <span class="faq__answer-highlight">iOS (iPhone 8+) y Android (8.0+)</span>. Hemos desarrollado aplicaciones nativas optimizadas para cada plataforma, garantizando el mejor rendimiento y una experiencia de usuario superior. Ambas versiones incluyen todas las funcionalidades y reciben actualizaciones automáticas.',
@@ -284,20 +310,19 @@ const translationData = {
         'video-info-title': 'Complete StarFlex Demo',
         'video-info-description': 'Watch how StarFlex completely automates your Amazon Flex experience. From initial setup to automatic block capture.',
         'videos-cta-title': 'Ready to Transform Your Earnings?',
-        'videos-cta-subtitle': 'Join thousands of drivers who are already maximizing their income',
-        'videos-cta-btn': 'START FREE TRIAL',
-        'videos-cta-trial': '3 days completely free',
-        'videos-demo-btn': 'SEE PERSONALIZED DEMO',
+        'videos-cta-description': 'Join more than 15,000 drivers who are already maximizing their income with StarFlex',
+        'videos-cta-start': 'START NOW',
+        'videos-cta-trial': '3 days free',
+        'videos-cta-demo': 'SEE PERSONALIZED DEMO',
         // FAQ Section
-        'faq-badge': 'Frequently Asked Questions',
-        'faq-title': 'EVERYTHING YOU NEED TO KNOW',
-        'faq-subtitle': 'We answer all your questions about StarFlex and how it can transform your Amazon Flex experience.',
+        'faq-title': 'Frequently Asked Questions',
+        'faq-subtitle': 'Find clear answers to the most common questions about StarFlex and discover how to transform your Amazon Flex experience.',
         'faq-search-placeholder': 'Search question...',
-        'faq-1-question': 'How does StarFlex work exactly?',
-        'faq-1-answer': 'StarFlex uses <span class="faq__answer-highlight">advanced automation technology</span> that constantly monitors the Amazon Flex app for blocks that match your configured preferences. When it finds a block that meets your schedule, location, and minimum price criteria, it automatically accepts it for you.',
-        'faq-2-question': 'Is StarFlex safe to use? Can it affect my Amazon Flex account?',
-        'faq-2-answer': 'Yes, StarFlex is completely safe. We use <span class="faq__answer-highlight">enterprise-level security protocols</span> and automation techniques that simulate natural human behavior. Thousands of drivers have used StarFlex for years without any issues with their Amazon Flex accounts.',
-        'faq-3-question': 'Can StarFlex be detected by Amazon?',
+        'faq-1-question': 'What are the main benefits of using StarFlex?',
+        'faq-1-answer': 'StarFlex is designed to <span class="faq__answer-highlight">eliminate distracted driving</span> through intelligent automation. It allows you to focus completely on safe driving while our system works to find the best blocks. With StarFlex, you don\'t need to constantly check your phone, ensuring a safer and more efficient experience that allows you to maximize your earnings.',
+        'faq-2-question': 'Can StarFlex automatically solve CAPTCHAs?',
+        'faq-2-answer': 'Yes, StarFlex includes <span class="faq__answer-highlight">advanced technology to automatically solve CAPTCHAs</span>. Our system uses intelligent algorithms that can interpret and solve different types of verifications, allowing smooth navigation without manual interruptions. This optimizes your time and makes your daily experience more efficient.',
+        'faq-3-question': 'Is it safe to use StarFlex? Can Amazon detect it?',
         'faq-3-answer': 'StarFlex uses <span class="faq__answer-highlight">advanced human simulation technology</span> that includes natural behavior patterns, variable response times and realistic touch gestures. Our approach focuses on helping drivers provide better service to Amazon and its customers, ensuring efficient and high-quality deliveries.',
         'faq-4-question': 'Does StarFlex work on iPhone and Android?',
         'faq-4-answer': 'Yes, StarFlex is available for <span class="faq__answer-highlight">iOS (iPhone 8+) and Android (8.0+)</span>. We have developed native applications optimized for each platform, guaranteeing the best performance and superior user experience. Both versions include all functionalities and receive automatic updates.',
@@ -376,284 +401,441 @@ function detectDeviceCapabilities() {
 // ===== DETECCIÓN DE SOPORTE DE FORMATOS DE IMAGEN OPTIMIZADA =====
 function detectImageFormats() {
     return new Promise((resolve) => {
-        const formats = { avif: false, webp: false };
-        let pending = 2;
+        const formats = {
+            avif: false,
+            webp: false
+        };
         
-        const checkComplete = () => {
-            pending--;
-            if (pending === 0) {
-                if (formats.avif) document.documentElement.classList.add('avif');
-                if (formats.webp) document.documentElement.classList.add('webp');
+        let testsCompleted = 0;
+        const totalTests = 2;
+        
+        function checkComplete() {
+            testsCompleted++;
+            if (testsCompleted === totalTests) {
+                if (formats.avif) {
+                    document.documentElement.classList.add('avif');
+                }
+                if (formats.webp) {
+                    document.documentElement.classList.add('webp');
+                }
                 resolve(formats);
             }
-        };
+        }
         
         // Test AVIF
         const avifImg = new Image();
-        avifImg.onload = avifImg.onerror = () => {
-            formats.avif = avifImg.width > 0;
+        avifImg.onload = avifImg.onerror = function() {
+            formats.avif = avifImg.height === 2;
             checkComplete();
         };
         avifImg.src = 'data:image/avif;base64,AAAAIGZ0eXBhdmlmAAAAAGF2aWZtaWYxbWlhZk1BMUIAAADybWV0YQAAAAAAAAAoaGRscgAAAAAAAAAAcGljdAAAAAAAAAAAAAAAAGxpYmF2aWYAAAAADnBpdG0AAAAAAAEAAAAeaWxvYwAAAABEAAABAAEAAAABAAABGgAAAB0AAAAoaWluZgAAAAAAAQAAABppbmZlAgAAAAABAABhdjAxQ29sb3IAAAAAamlwcnAAAABLaXBjbwAAABRpc3BlAAAAAAAAAAIAAAACAAAAEHBpeGkAAAAAAwgICAAAAAxhdjFDgQ0MAAAAABNjb2xybmNseAACAAIAAYAAAAAXaXBtYQAAAAAAAAABAAEEAQKDBAAAACVtZGF0EgAKCBgABogQEAwgMg8f8D///8WfhwB8+ErK42A=';
         
         // Test WebP
         const webpImg = new Image();
-        webpImg.onload = webpImg.onerror = () => {
-            formats.webp = webpImg.width > 0;
+        webpImg.onload = webpImg.onerror = function() {
+            formats.webp = webpImg.height === 2;
             checkComplete();
         };
         webpImg.src = 'data:image/webp;base64,UklGRjoAAABXRUJQVlA4IC4AAACyAgCdASoCAAIALmk0mk0iIiIiIgBoSygABc6WWgAA/veff/0PP8bA//LwYAAA';
     });
 }
 
-// ===== CLASE OPTIMIZADORA DE IMÁGENES ULTRA-AVANZADA =====
+// ===== CLASE ULTRA-OPTIMIZADA PARA IMÁGENES =====
 class UltraOptimizedImageLoader {
     constructor() {
-        this.cache = new Map();
+        this.imageCache = new Map();
+        this.lazyImages = new Set();
         this.intersectionObserver = null;
         this.supportedFormats = { avif: false, webp: false };
-        this.loadingQueue = new Set();
-        this.maxConcurrentLoads = isMobile ? 2 : 4;
-        this.currentLoads = 0;
+        this.init();
     }
-
+    
     async init() {
         this.supportedFormats = await detectImageFormats();
         this.setupLazyLoading();
         this.preloadCriticalImages();
     }
-
+    
     setupLazyLoading() {
-        if ('IntersectionObserver' in window) {
+        if ('IntersectionObserver' in window && !performanceMode) {
             this.intersectionObserver = new IntersectionObserver(
                 (entries) => {
                     entries.forEach(entry => {
                         if (entry.isIntersecting) {
-                            const img = entry.target;
-                            const imageKey = img.dataset.imageKey;
-                            if (imageKey) {
-                                this.loadImage(img, imageKey);
-                                this.intersectionObserver.unobserve(img);
-                            }
+                            this.loadImage(entry.target);
+                            this.intersectionObserver.unobserve(entry.target);
                         }
                     });
                 },
                 {
-                    rootMargin: isMobile ? '50px' : '100px',
-                    threshold: 0.1
+                    rootMargin: isMobile ? '50px 0px' : '100px 0px',
+                    threshold: 0.01
                 }
             );
         }
     }
-
-    getBestImageUrl(basePath) {
-        if (this.supportedFormats.avif) {
-            return `${basePath}.avif`;
-        } else if (this.supportedFormats.webp) {
-            return `${basePath}.webp`;
-        } else {
-            return `${basePath}.jpg`;
+    
+    getBestImageUrl(imageConfig) {
+        if (!imageConfig) return null;
+        
+        if (this.supportedFormats.avif && imageConfig.avif) {
+            return imageConfig.avif;
         }
+        
+        if (this.supportedFormats.webp && imageConfig.webp) {
+            return imageConfig.webp;
+        }
+        
+        return imageConfig.jpg || imageConfig.png || imageConfig.avif;
     }
-
-    async loadImage(element, imageKey) {
-        if (this.currentLoads >= this.maxConcurrentLoads) {
-            this.loadingQueue.add({ element, imageKey });
+    
+    async loadImage(element) {
+        const imageKey = element.dataset.imageKey;
+        const imageConfig = this.getImageConfig(imageKey);
+        
+        if (!imageConfig) {
+            console.warn(`Configuración de imagen no encontrada para: ${imageKey}`);
             return;
         }
-
-        this.currentLoads++;
+        
+        const imageUrl = this.getBestImageUrl(imageConfig);
+        
+        if (!imageUrl) {
+            console.warn(`No se encontró URL válida para: ${imageKey}`);
+            return;
+        }
         
         try {
-            const config = this.getImageConfig(imageKey);
-            if (!config) return;
-
-            const cacheKey = `${imageKey}_${isMobile ? 'mobile' : 'desktop'}`;
+            element.classList.add('loading');
             
-            if (this.cache.has(cacheKey)) {
-                this.applyImage(element, this.cache.get(cacheKey));
-                return;
-            }
-
-            const imageUrl = this.getBestImageUrl(config.path);
             await this.preloadImage(imageUrl);
             
-            this.cache.set(cacheKey, imageUrl);
-            this.applyImage(element, imageUrl);
+            if (element.tagName === 'IMG') {
+                element.src = imageUrl;
+                element.alt = element.dataset.alt || '';
+            } else {
+                element.style.backgroundImage = `url('${imageUrl}')`;
+            }
+            
+            element.classList.remove('loading');
+            element.classList.add('loaded');
             
         } catch (error) {
-            console.warn(`Error cargando imagen ${imageKey}:`, error);
-        } finally {
-            this.currentLoads--;
-            this.processQueue();
+            console.error(`Error cargando imagen ${imageKey}:`, error);
+            element.classList.remove('loading');
+            element.classList.add('error');
         }
     }
-
-    processQueue() {
-        if (this.loadingQueue.size > 0 && this.currentLoads < this.maxConcurrentLoads) {
-            const next = this.loadingQueue.values().next().value;
-            this.loadingQueue.delete(next);
-            this.loadImage(next.element, next.imageKey);
+    
+    preloadImage(url) {
+        if (this.imageCache.has(url)) {
+            return Promise.resolve();
         }
-    }
-
-    preloadImage(src) {
+        
         return new Promise((resolve, reject) => {
             const img = new Image();
-            img.onload = () => resolve(img);
+            img.onload = () => {
+                this.imageCache.set(url, true);
+                resolve();
+            };
             img.onerror = reject;
-            img.src = src;
+            img.src = url;
         });
     }
-
-    applyImage(element, src) {
-        if (element.tagName === 'IMG') {
-            element.src = src;
-            element.classList.add('loaded');
-        } else {
-            element.style.backgroundImage = `url(${src})`;
-            element.classList.add('loaded');
-        }
-    }
-
-    getImageConfig(imageKey) {
-        const keys = imageKey.split('.');
+    
+    getImageConfig(key) {
+        const parts = key.split('.');
         let config = CONFIG.IMAGE_PATHS;
         
-        for (const key of keys) {
-            config = config[key];
+        for (const part of parts) {
+            config = config[part];
             if (!config) return null;
         }
         
-        return { path: config };
+        return config;
     }
-
-    preloadCriticalImages() {
-        const criticalImages = ['hero', 'logo'];
-        criticalImages.forEach(key => {
+    
+    async preloadCriticalImages() {
+        if (performanceMode) return;
+        
+        const criticalImages = [
+            'hero',
+            'logo'
+        ];
+        
+        const preloadPromises = criticalImages.map(async (key) => {
             const config = this.getImageConfig(key);
             if (config) {
-                const url = this.getBestImageUrl(config.path);
-                this.preloadImage(url).catch(() => {});
+                const url = this.getBestImageUrl(config);
+                if (url) {
+                    try {
+                        await this.preloadImage(url);
+                    } catch (error) {
+                        console.warn(`Error precargando imagen crítica ${key}:`, error);
+                    }
+                }
             }
         });
+        
+        await Promise.all(preloadPromises);
     }
-
+    
     observeImage(element, imageKey) {
-        if (this.intersectionObserver) {
-            element.dataset.imageKey = imageKey;
+        element.dataset.imageKey = imageKey;
+        this.lazyImages.add(element);
+        
+        if (this.intersectionObserver && !performanceMode) {
             this.intersectionObserver.observe(element);
         } else {
-            this.loadImage(element, imageKey);
+            this.loadImage(element);
         }
     }
-
+    
     loadImageImmediately(element, imageKey) {
-        this.loadImage(element, imageKey);
+        element.dataset.imageKey = imageKey;
+        this.loadImage(element);
     }
 }
 
-// ===== SISTEMA DE IDIOMAS OPTIMIZADO =====
+// ===== INICIALIZACIÓN GLOBAL OPTIMIZADA =====
+let imageOptimizer;
+
+// ===== FUNCIONES DE TRADUCCIÓN ULTRA-OPTIMIZADAS =====
 function initializeLanguageSystem() {
-    currentLanguage = localStorage.getItem('starflex-language') || 'es';
-    translations[currentLanguage] = translationData[currentLanguage];
+    const savedLanguage = localStorage.getItem('starflex-language');
+    const browserLanguage = navigator.language.slice(0, 2);
+    
+    if (savedLanguage && translationData[savedLanguage]) {
+        currentLanguage = savedLanguage;
+    } else if (translationData[browserLanguage]) {
+        currentLanguage = browserLanguage;
+    } else {
+        currentLanguage = 'es';
+    }
+    
     applyTranslations();
     updateLanguageButtons();
+    setupLanguageToggle();
 }
 
-function initializeLanguageSwitcher() {
-    const languageOptions = document.querySelectorAll('.nav__language-option');
+function setupLanguageToggle() {
+    const languageButtons = document.querySelectorAll('.language-btn, .nav__language-option');
     
-    languageOptions.forEach(option => {
-        option.addEventListener('click', (e) => {
+    languageButtons.forEach(button => {
+        button.addEventListener('click', (e) => {
             e.preventDefault();
-            const lang = option.dataset.lang;
-            if (lang && lang !== currentLanguage) {
-                switchLanguage(lang);
+            const selectedLanguage = button.getAttribute('data-lang');
+            if (selectedLanguage && selectedLanguage !== currentLanguage) {
+                switchLanguage(selectedLanguage);
             }
         });
     });
 }
 
 function switchLanguage(newLanguage) {
-    if (newLanguage === currentLanguage) return;
+    if (!translationData[newLanguage]) {
+        console.warn(`Language ${newLanguage} not supported`);
+        return;
+    }
     
     currentLanguage = newLanguage;
     localStorage.setItem('starflex-language', newLanguage);
-    translations[currentLanguage] = translationData[currentLanguage];
     
     applyTranslations();
     updateLanguageButtons();
     
-    // Actualizar meta tags
-    document.title = translations[currentLanguage]['page-title'];
-    document.querySelector('meta[name="description"]').content = translations[currentLanguage]['page-description'];
-    document.querySelector('meta[property="og:title"]').content = translations[currentLanguage]['og-title'];
-    document.querySelector('meta[property="og:description"]').content = translations[currentLanguage]['og-description'];
+    document.documentElement.lang = newLanguage;
+    
+    if (!isMobile && !performanceMode) {
+        document.body.style.opacity = '0.95';
+        setTimeout(() => {
+            document.body.style.opacity = '1';
+        }, 100);
+    }
 }
 
 function applyTranslations() {
-    const elements = document.querySelectorAll('[data-translate]');
-    elements.forEach(element => {
-        const key = element.dataset.translate;
-        if (translations[currentLanguage] && translations[currentLanguage][key]) {
-            element.innerHTML = translations[currentLanguage][key];
-        }
-    });
+    const currentTranslations = translationData[currentLanguage];
     
-    // Actualizar atributos aria-label
-    const ariaElements = document.querySelectorAll('[data-translate-aria]');
-    ariaElements.forEach(element => {
-        const key = element.dataset.translateAria;
-        if (translations[currentLanguage] && translations[currentLanguage][key]) {
-            element.setAttribute('aria-label', translations[currentLanguage][key]);
-        }
-    });
+    if (!currentTranslations) {
+        console.warn(`Translations for ${currentLanguage} not found`);
+        return;
+    }
     
-    // Actualizar atributos alt
-    const altElements = document.querySelectorAll('[data-translate-alt]');
-    altElements.forEach(element => {
-        const key = element.dataset.translateAlt;
-        if (translations[currentLanguage] && translations[currentLanguage][key]) {
-            element.setAttribute('alt', translations[currentLanguage][key]);
-        }
+    requestAnimationFrame(() => {
+        document.querySelectorAll('[data-translate]').forEach(element => {
+            const key = element.getAttribute('data-translate');
+            const translation = currentTranslations[key];
+            
+            if (translation) {
+                if (element.tagName === 'INPUT' && element.type === 'text') {
+                    element.placeholder = translation;
+                } else if (element.tagName === 'META') {
+                    element.content = translation;
+                } else if (element.tagName === 'TITLE') {
+                    element.textContent = translation;
+                } else {
+                    element.innerHTML = translation;
+                }
+            }
+        });
+        
+        document.querySelectorAll('[data-translate-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-translate-placeholder');
+            const translation = currentTranslations[key];
+            if (translation) {
+                element.placeholder = translation;
+            }
+        });
+        
+        document.querySelectorAll('[data-translate-aria]').forEach(element => {
+            const key = element.getAttribute('data-translate-aria');
+            const translation = currentTranslations[key];
+            if (translation) {
+                element.setAttribute('aria-label', translation);
+            }
+        });
+        
+        document.querySelectorAll('[data-translate-alt]').forEach(element => {
+            const key = element.getAttribute('data-translate-alt');
+            const translation = currentTranslations[key];
+            if (translation) {
+                element.alt = translation;
+            }
+        });
     });
 }
 
 function updateLanguageButtons() {
-    const languageOptions = document.querySelectorAll('.nav__language-option');
-    languageOptions.forEach(option => {
-        const lang = option.dataset.lang;
-        if (lang === currentLanguage) {
-            option.classList.add('active');
-            option.setAttribute('aria-pressed', 'true');
+    const languageButtons = document.querySelectorAll('.language-btn, .nav__language-option');
+    languageButtons.forEach(button => {
+        const buttonLang = button.getAttribute('data-lang');
+        if (buttonLang === currentLanguage) {
+            button.classList.add('active');
         } else {
-            option.classList.remove('active');
-            option.setAttribute('aria-pressed', 'false');
+            button.classList.remove('active');
+        }
+    });
+    
+    updateLanguageSwitcher();
+}
+
+// ===== SELECTOR DE IDIOMA FLOTANTE OPTIMIZADO =====
+function initializeLanguageSwitcher() {
+    const languageSwitcherBtn = document.getElementById('language-switcher-btn');
+    const languageSwitcherDropdown = document.getElementById('language-switcher-dropdown');
+    const languageSwitcher = document.getElementById('language-switcher');
+    const languageOptions = languageSwitcher?.querySelectorAll('.language-switcher__option');
+    
+    if (!languageSwitcherBtn || !languageSwitcherDropdown || !languageSwitcher) return;
+    
+    if (isMobile) return;
+    
+    languageSwitcherBtn.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+        toggleLanguageSwitcher();
+    });
+    
+    languageOptions?.forEach(option => {
+        option.addEventListener('click', (e) => {
+            e.preventDefault();
+            const selectedLanguage = option.getAttribute('data-lang');
+            if (selectedLanguage && selectedLanguage !== currentLanguage) {
+                switchLanguage(selectedLanguage);
+                closeLanguageSwitcher();
+            }
+        });
+    });
+    
+    document.addEventListener('click', (e) => {
+        if (isLanguageSwitcherOpen && languageSwitcher && !languageSwitcher.contains(e.target)) {
+            closeLanguageSwitcher();
+        }
+    });
+    
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape' && isLanguageSwitcherOpen) {
+            closeLanguageSwitcher();
         }
     });
 }
 
-// ===== WIDGET FLOTANTE OPTIMIZADO =====
+function toggleLanguageSwitcher() {
+    if (isLanguageSwitcherOpen) {
+        closeLanguageSwitcher();
+    } else {
+        openLanguageSwitcher();
+    }
+}
+
+function openLanguageSwitcher() {
+    const languageSwitcher = document.getElementById('language-switcher');
+    const languageSwitcherBtn = document.getElementById('language-switcher-btn');
+    
+    if (!languageSwitcher || !languageSwitcherBtn) return;
+    
+    isLanguageSwitcherOpen = true;
+    languageSwitcher.classList.add('active');
+    languageSwitcherBtn.setAttribute('aria-expanded', 'true');
+}
+
+function closeLanguageSwitcher() {
+    const languageSwitcher = document.getElementById('language-switcher');
+    const languageSwitcherBtn = document.getElementById('language-switcher-btn');
+    
+    if (!languageSwitcher || !languageSwitcherBtn) return;
+    
+    isLanguageSwitcherOpen = false;
+    languageSwitcher.classList.remove('active');
+    languageSwitcherBtn.setAttribute('aria-expanded', 'false');
+}
+
+function updateLanguageSwitcher() {
+    const languageSwitcherText = document.getElementById('language-switcher-text');
+    
+    if (languageSwitcherText) {
+        languageSwitcherText.textContent = currentLanguage.toUpperCase();
+    }
+    
+    const allOptions = document.querySelectorAll('.language-switcher__option');
+    allOptions.forEach(option => {
+        const optionLang = option.getAttribute('data-lang');
+        if (optionLang === currentLanguage) {
+            option.classList.add('active');
+        } else {
+            option.classList.remove('active');
+        }
+    });
+}
+
+// ===== FUNCIONES DEL BOTÓN FLOTANTE ULTRA-OPTIMIZADAS =====
 function initializeFloatingWidget() {
-    const floatingBtn = document.getElementById('floating-btn');
+    const floatingMainBtn = document.getElementById('floating-main-btn');
     const floatingMenu = document.getElementById('floating-menu');
     
-    if (!floatingBtn || !floatingMenu) return;
+    if (!floatingMainBtn || !floatingMenu) return;
     
-    floatingBtn.addEventListener('click', (e) => {
-        e.preventDefault();
+    floatingMainBtn.addEventListener('click', () => {
         toggleFloatingMenu();
     });
     
-    // Cerrar al hacer clic fuera
+    if (isMobile) {
+        floatingMainBtn.addEventListener('touchstart', () => {
+            floatingMainBtn.style.transform = 'scale(0.95)';
+        }, { passive: true });
+        floatingMainBtn.addEventListener('touchend', () => {
+            floatingMainBtn.style.transform = '';
+        }, { passive: true });
+    }
+    
     document.addEventListener('click', (e) => {
-        if (isFloatingMenuOpen && !floatingBtn.contains(e.target) && !floatingMenu.contains(e.target)) {
+        const floatingWidget = document.getElementById('floating-widget');
+        if (isFloatingMenuOpen && floatingWidget && !floatingWidget.contains(e.target)) {
             closeFloatingMenu();
         }
     });
     
-    // Cerrar con Escape
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isFloatingMenuOpen) {
             closeFloatingMenu();
@@ -670,55 +852,157 @@ function toggleFloatingMenu() {
 }
 
 function openFloatingMenu() {
-    const floatingBtn = document.getElementById('floating-btn');
+    const floatingMainBtn = document.getElementById('floating-main-btn');
     const floatingMenu = document.getElementById('floating-menu');
     
-    if (!floatingBtn || !floatingMenu) return;
+    if (!floatingMainBtn || !floatingMenu) return;
     
     isFloatingMenuOpen = true;
-    floatingBtn.classList.add('active');
+    floatingMainBtn.classList.add('active');
     floatingMenu.classList.add('active');
-    floatingBtn.setAttribute('aria-expanded', 'true');
-    floatingMenu.setAttribute('aria-hidden', 'false');
+    floatingMainBtn.setAttribute('aria-expanded', 'true');
+    
+    const menuItems = floatingMenu.querySelectorAll('.floating-widget__menu-item');
+    menuItems.forEach((item, index) => {
+        setTimeout(() => {
+            item.style.transform = 'translateY(0) scale(1)';
+            item.style.opacity = '1';
+        }, index * (isMobile ? 60 : 100));
+    });
 }
 
 function closeFloatingMenu() {
-    const floatingBtn = document.getElementById('floating-btn');
+    const floatingMainBtn = document.getElementById('floating-main-btn');
     const floatingMenu = document.getElementById('floating-menu');
     
-    if (!floatingBtn || !floatingMenu) return;
+    if (!floatingMainBtn || !floatingMenu) return;
     
     isFloatingMenuOpen = false;
-    floatingBtn.classList.remove('active');
+    floatingMainBtn.classList.remove('active');
     floatingMenu.classList.remove('active');
-    floatingBtn.setAttribute('aria-expanded', 'false');
-    floatingMenu.setAttribute('aria-hidden', 'true');
+    floatingMainBtn.setAttribute('aria-expanded', 'false');
+    
+    const menuItems = floatingMenu.querySelectorAll('.floating-widget__menu-item');
+    menuItems.forEach(item => {
+        item.style.transform = '';
+        item.style.opacity = '';
+    });
 }
 
-// ===== NAVEGACIÓN ULTRA-OPTIMIZADA =====
+// ===== NAVEGACIÓN RESPONSIVE ULTRA-OPTIMIZADA =====
 function initializeNavigation() {
     const navToggle = document.getElementById('nav-toggle');
     const navMenu = document.getElementById('nav-menu');
+    const navClose = document.getElementById('nav-close');
     const navLinks = document.querySelectorAll('.nav__link');
+    const header = document.getElementById('header');
     
-    if (navToggle && navMenu) {
-        navToggle.addEventListener('click', toggleMobileMenu);
-        
-        // Cerrar menú al hacer clic en un enlace
-        navLinks.forEach(link => {
-            link.addEventListener('click', (e) => {
-                const href = link.getAttribute('href');
-                if (href && href.startsWith('#')) {
-                    e.preventDefault();
-                    closeMobileMenu();
-                    smoothScrollToSection(href.substring(1));
+    // Funcionalidad del logo como enlace
+    const navLogo = document.querySelector('.nav__logo');
+    if (navLogo) {
+        navLogo.addEventListener('click', (e) => {
+            e.preventDefault();
+            
+            if (isMenuOpen) {
+                closeMobileMenu();
+            }
+            
+            const homeSection = document.querySelector('#home');
+            if (homeSection) {
+                smoothScrollToSection(homeSection);
+                
+                const homeLink = document.querySelector('.nav__link[href="#home"]');
+                if (homeLink) {
+                    updateActiveNavLink(homeLink);
                 }
-            });
+            }
         });
         
-        // Cerrar menú al hacer clic fuera
+        navLogo.style.cursor = 'pointer';
+        navLogo.setAttribute('tabindex', '0');
+        navLogo.setAttribute('role', 'button');
+        navLogo.setAttribute('aria-label', 'Ir al inicio');
+        
+        navLogo.addEventListener('keydown', (e) => {
+            if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                navLogo.click();
+            }
+        });
+
+        if (isMobile) {
+            navLogo.addEventListener('touchstart', () => {
+                navLogo.style.transform = 'scale(0.95)';
+            }, { passive: true });
+            navLogo.addEventListener('touchend', () => {
+                navLogo.style.transform = '';
+            }, { passive: true });
+        }
+    }
+    
+    if (navToggle && navMenu) {
+        navToggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            toggleMobileMenu();
+        });
+
+        if (isMobile) {
+            navToggle.addEventListener('touchstart', () => {
+                navToggle.style.transform = 'scale(0.95)';
+            }, { passive: true });
+            navToggle.addEventListener('touchend', () => {
+                navToggle.style.transform = '';
+            }, { passive: true });
+        }
+    }
+    
+    if (navClose) {
+        navClose.addEventListener('click', (e) => {
+            e.preventDefault();
+            e.stopPropagation();
+            closeMobileMenu();
+        });
+
+        if (isMobile) {
+            navClose.addEventListener('touchstart', () => {
+                navClose.style.transform = 'scale(0.95)';
+            }, { passive: true });
+            navClose.addEventListener('touchend', () => {
+                navClose.style.transform = '';
+            }, { passive: true });
+        }
+    }
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            if (isMenuOpen) {
+                closeMobileMenu();
+            }
+            
+            e.preventDefault();
+            const targetId = link.getAttribute('href');
+            const targetSection = document.querySelector(targetId);
+            
+            if (targetSection) {
+                smoothScrollToSection(targetSection);
+                updateActiveNavLink(link);
+            }
+        });
+
+        if (isMobile) {
+            link.addEventListener('touchstart', () => {
+                link.style.transform = 'scale(0.98)';
+            }, { passive: true });
+            link.addEventListener('touchend', () => {
+                link.style.transform = '';
+            }, { passive: true });
+        }
+    });
+    
+    if (!isMobile) {
         document.addEventListener('click', (e) => {
-            if (isMenuOpen && !navToggle.contains(e.target) && !navMenu.contains(e.target)) {
+            if (isMenuOpen && navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
                 closeMobileMenu();
             }
         });
@@ -726,6 +1010,12 @@ function initializeNavigation() {
     
     initializeKeyboardNavigation();
     initializeActiveSection();
+}
+
+function initializeActiveSection() {
+    setTimeout(() => {
+        updateActiveNavOnScroll();
+    }, 100);
 }
 
 function toggleMobileMenu() {
@@ -744,9 +1034,11 @@ function openMobileMenu() {
     if (!navToggle || !navMenu) return;
     
     isMenuOpen = true;
+    
     navToggle.classList.add('active');
     navMenu.classList.add('active');
     body.classList.add('no-scroll');
+    
     navToggle.setAttribute('aria-expanded', 'true');
     navMenu.setAttribute('aria-hidden', 'false');
     
@@ -781,7 +1073,16 @@ function openMobileMenu() {
             navCtaMobile.style.transition = `all ${isMobile ? '0.2s' : '0.3s'} ease`;
             navCtaMobile.style.opacity = '1';
             navCtaMobile.style.transform = 'translateY(0)';
-        }, navLinks.length * (isMobile ? 40 : 60) + (isMobile ? 120 : 160));
+        }, (navLinks.length + 2) * (isMobile ? 40 : 60) + (isMobile ? 60 : 100));
+    }
+    
+    if (!isMobile) {
+        setTimeout(() => {
+            const firstLink = navMenu.querySelector('.nav__link');
+            if (firstLink) {
+                firstLink.focus();
+            }
+        }, 300);
     }
 }
 
@@ -793,240 +1094,298 @@ function closeMobileMenu() {
     if (!navToggle || !navMenu) return;
     
     isMenuOpen = false;
+    
     navToggle.classList.remove('active');
     navMenu.classList.remove('active');
     body.classList.remove('no-scroll');
+    
     navToggle.setAttribute('aria-expanded', 'false');
     navMenu.setAttribute('aria-hidden', 'true');
     
-    // Resetear estilos de animación
-    const animatedElements = navMenu.querySelectorAll('.nav__language-mobile, .nav__link, .nav__cta-mobile');
-    animatedElements.forEach(element => {
+    const elementsToReset = navMenu.querySelectorAll('.nav__language-mobile, .nav__link, .nav__cta-mobile');
+    elementsToReset.forEach(element => {
         element.style.transition = '';
         element.style.opacity = '';
         element.style.transform = '';
     });
+    
+    if (!isMobile) {
+        navToggle.focus();
+    }
 }
 
-function smoothScrollToSection(sectionId) {
-    const section = document.getElementById(sectionId);
-    if (section) {
-        const headerHeight = document.querySelector('.header')?.offsetHeight || 0;
-        const targetPosition = section.offsetTop - headerHeight - 20;
-        
+function smoothScrollToSection(targetSection) {
+    const headerHeight = isMobile ? 70 : 80;
+    const targetPosition = targetSection.offsetTop - headerHeight;
+    
+    if ('scrollBehavior' in document.documentElement.style && !performanceMode) {
         window.scrollTo({
             top: targetPosition,
             behavior: 'smooth'
         });
+    } else {
+        window.scrollTo(0, targetPosition);
     }
 }
 
-function updateActiveNavLink() {
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('.nav__link[href^="#"]');
-    
-    let currentSection = '';
-    const scrollPosition = window.scrollY + 100;
-    
-    sections.forEach(section => {
-        const sectionTop = section.offsetTop;
-        const sectionHeight = section.offsetHeight;
-        
-        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-            currentSection = section.getAttribute('id');
-        }
-    });
-    
-    navLinks.forEach(link => {
+function updateActiveNavLink(activeLink) {
+    document.querySelectorAll('.nav__link').forEach(link => {
         link.classList.remove('active');
-        if (link.getAttribute('href') === `#${currentSection}`) {
-            link.classList.add('active');
-        }
+        link.setAttribute('aria-current', 'false');
     });
+    
+    if (activeLink) {
+        activeLink.classList.add('active');
+        activeLink.setAttribute('aria-current', 'page');
+    }
 }
 
+// ===== NAVEGACIÓN POR TECLADO OPTIMIZADA =====
 function initializeKeyboardNavigation() {
-    const navLinks = document.querySelectorAll('.nav__link, .nav__cta');
+    const navMenu = document.getElementById('nav-menu');
     const navToggle = document.getElementById('nav-toggle');
+    if (!navMenu || !navToggle) return;
     
-    // Navegación con teclado
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && isMenuOpen) {
+            e.preventDefault();
             closeMobileMenu();
+            return;
         }
         
-        if (e.key === 'Tab' && isMenuOpen) {
+        if (e.key === 'Tab' && isMenuOpen && !isMobile) {
             handleTabTrap(e);
         }
-    });
-    
-    // Mejorar accesibilidad táctil en móvil
-    if (isMobile) {
-        navLinks.forEach(link => {
-            link.addEventListener('touchstart', () => {
-                link.style.transform = 'scale(0.95)';
-            });
-            link.addEventListener('touchend', () => {
-                link.style.transform = '';
-            });
-        });
         
-        if (navToggle) {
-            navToggle.addEventListener('touchstart', () => {
-                navToggle.style.transform = 'scale(0.9)';
-            });
-            navToggle.addEventListener('touchend', () => {
-                navToggle.style.transform = '';
-            });
+        if ((e.key === 'Enter' || e.key === ' ') && e.target === navToggle) {
+            e.preventDefault();
+            toggleMobileMenu();
         }
-    }
+    });
 }
 
 function handleTabTrap(e) {
     const navMenu = document.getElementById('nav-menu');
-    if (!navMenu || !isMenuOpen) return;
-    
     const focusableElements = navMenu.querySelectorAll(
         'a[href], button, [tabindex]:not([tabindex="-1"])'
     );
-    const firstElement = focusableElements[0];
-    const lastElement = focusableElements[focusableElements.length - 1];
+    const firstFocusable = focusableElements[0];
+    const lastFocusable = focusableElements[focusableElements.length - 1];
     
     if (e.shiftKey) {
-        if (document.activeElement === firstElement) {
+        if (document.activeElement === firstFocusable) {
             e.preventDefault();
-            lastElement.focus();
+            lastFocusable.focus();
         }
     } else {
-        if (document.activeElement === lastElement) {
+        if (document.activeElement === lastFocusable) {
             e.preventDefault();
-            firstElement.focus();
+            firstFocusable.focus();
         }
     }
 }
 
-function initializeActiveSection() {
-    updateActiveNavLink();
-    window.addEventListener('scroll', throttle(updateActiveNavLink, 100));
-}
-
 // ===== EFECTOS DE SCROLL ULTRA-OPTIMIZADOS =====
 function initializeScrollEffects() {
+    let scrollTimeout;
+    
     window.addEventListener('scroll', () => {
-        if (!ticking) {
-            requestAnimationFrame(() => {
-                handleScrollDirection();
-                updateActiveNavOnScroll();
-                updateHeaderOnScroll();
-                ticking = false;
-            });
-            ticking = true;
-        }
-    });
+        if (scrollTimeout) return;
+        
+        scrollTimeout = setTimeout(() => {
+            if (!ticking) {
+                requestAnimationFrame(() => {
+                    updateActiveNavOnScroll();
+                    handleScrollDirection();
+                    updateHeaderOnScroll();
+                    ticking = false;
+                });
+                ticking = true;
+            }
+            scrollTimeout = null;
+        }, isMobile ? 50 : 25);
+    }, { passive: true });
 }
 
 function handleScrollDirection() {
     const currentScrollY = window.scrollY;
     
-    if (currentScrollY > lastScrollY && currentScrollY > 100) {
-        // Scrolling down
-        if (!isScrollingDown) {
-            isScrollingDown = true;
-            if (!isMenuOpen) {
-                document.querySelector('.header')?.classList.add('header--hidden');
-            }
-        }
-    } else if (currentScrollY < lastScrollY) {
-        // Scrolling up
-        if (isScrollingDown) {
-            isScrollingDown = false;
-            document.querySelector('.header')?.classList.remove('header--hidden');
-        }
+    if (currentScrollY > lastScrollY && currentScrollY > (isMobile ? 50 : 100)) {
+        isScrollingDown = true;
+    } else {
+        isScrollingDown = false;
     }
     
     lastScrollY = currentScrollY;
 }
 
 function updateActiveNavOnScroll() {
-    updateActiveNavLink();
+    const sections = document.querySelectorAll('section[id]');
+    const scrollY = window.scrollY;
+    const headerHeight = isMobile ? 80 : 100;
+    const windowHeight = window.innerHeight;
+    
+    let activeSection = null;
+    let maxVisibleArea = 0;
+    
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        const sectionBottom = sectionTop + sectionHeight;
+        const sectionId = section.getAttribute('id');
+        
+        const viewportTop = scrollY + headerHeight;
+        const viewportBottom = scrollY + windowHeight;
+        
+        const visibleTop = Math.max(viewportTop, sectionTop);
+        const visibleBottom = Math.min(viewportBottom, sectionBottom);
+        const visibleArea = Math.max(0, visibleBottom - visibleTop);
+        
+        if (visibleArea > maxVisibleArea && visibleArea > 50) {
+            maxVisibleArea = visibleArea;
+            activeSection = sectionId;
+        }
+    });
+    
+    if (!activeSection) {
+        const scrollPosition = scrollY + headerHeight + 50;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop;
+            const sectionHeight = section.offsetHeight;
+            const sectionId = section.getAttribute('id');
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                activeSection = sectionId;
+            }
+        });
+    }
+    
+    if (activeSection) {
+        const activeLink = document.querySelector(`.nav__link[href="#${activeSection}"]`);
+        const currentActiveLink = document.querySelector('.nav__link.active');
+        
+        if (activeLink && activeLink !== currentActiveLink) {
+            updateActiveNavLink(activeLink);
+        }
+    }
 }
 
 function updateHeaderOnScroll() {
-    const header = document.querySelector('.header');
+    const header = document.getElementById('header');
     if (!header) return;
     
-    if (window.scrollY > 50) {
-        header.classList.add('header--scrolled');
+    const scrollY = window.scrollY;
+    const threshold = isMobile ? 50 : 100;
+    
+    if (scrollY > threshold) {
+        header.classList.add('scrolled');
     } else {
-        header.classList.remove('header--scrolled');
+        header.classList.remove('scrolled');
+    }
+    
+    // Auto-hide navbar optimizado
+    if (scrollY > lastScrollY && scrollY > threshold && !isMenuOpen) {
+        if (isNavbarVisible) {
+            header.style.transform = 'translateY(-100%)';
+            isNavbarVisible = false;
+        }
+    } else {
+        if (!isNavbarVisible) {
+            header.style.transform = 'translateY(0)';
+            isNavbarVisible = true;
+        }
     }
 }
 
 // ===== REPRODUCTOR DE VIDEO ULTRA-OPTIMIZADO =====
 function initializeVideoPlayer() {
-    const video = document.getElementById('demo-video');
-    const playBtn = document.getElementById('video-play-btn');
-    const progressBar = document.getElementById('video-progress');
-    const currentTimeSpan = document.getElementById('video-current-time');
-    const durationSpan = document.getElementById('video-duration');
-    const videoContainer = document.querySelector('.videos__player-container');
+    const video = document.getElementById('main-video');
+    const playOverlay = document.getElementById('play-overlay');
+    const progressBar = document.querySelector('.videos__progress-bar');
+    const progressFill = document.querySelector('.videos__progress-fill');
+    const currentTimeDisplay = document.querySelector('.videos__current-time');
+    const durationDisplay = document.querySelector('.videos__duration');
+    const progressIndicators = document.querySelector('.videos__progress-indicators');
     
-    if (!video || !playBtn) return;
+    if (!video || !playOverlay) return;
     
-    let isPlaying = false;
+    video.controls = false;
+    video.preload = isMobile ? 'none' : 'metadata';
     
-    // Configuración inicial del video
-    video.preload = isMobile ? 'metadata' : 'auto';
-    video.muted = true;
-    
-    playBtn.addEventListener('click', () => {
-        if (isPlaying) {
-            video.pause();
-        } else {
-            video.play().catch(e => {
-                console.error('Error reproduciendo video:', e);
-                showVideoError();
-            });
+    video.addEventListener('loadedmetadata', () => {
+        if (durationDisplay) {
+            durationDisplay.textContent = formatTime(video.duration);
         }
     });
     
-    video.addEventListener('play', () => {
-        isPlaying = true;
-        playBtn.classList.add('playing');
-        videoContainer?.classList.add('playing');
+    playOverlay.addEventListener('click', () => {
+        if (video.paused) {
+            video.play();
+            playOverlay.classList.add('hidden');
+            if (progressIndicators) {
+                progressIndicators.classList.add('visible');
+            }
+        }
     });
     
-    video.addEventListener('pause', () => {
-        isPlaying = false;
-        playBtn.classList.remove('playing');
-        videoContainer?.classList.remove('playing');
+    if (isMobile) {
+        playOverlay.addEventListener('touchstart', () => {
+            playOverlay.style.transform = 'scale(0.98)';
+        }, { passive: true });
+        playOverlay.addEventListener('touchend', () => {
+            playOverlay.style.transform = '';
+        }, { passive: true });
+    }
+    
+    video.addEventListener('click', () => {
+        if (!video.paused) {
+            video.pause();
+            playOverlay.classList.remove('hidden');
+            if (progressIndicators) {
+                progressIndicators.classList.remove('visible');
+            }
+        }
     });
     
     video.addEventListener('timeupdate', () => {
-        if (progressBar && video.duration) {
+        if (video.duration) {
             const progress = (video.currentTime / video.duration) * 100;
-            progressBar.style.width = `${progress}%`;
-        }
-        
-        if (currentTimeSpan) {
-            currentTimeSpan.textContent = formatTime(video.currentTime);
+            if (progressFill) {
+                progressFill.style.width = `${progress}%`;
+            }
+            if (currentTimeDisplay) {
+                currentTimeDisplay.textContent = formatTime(video.currentTime);
+            }
         }
     });
     
-    video.addEventListener('loadedmetadata', () => {
-        if (durationSpan) {
-            durationSpan.textContent = formatTime(video.duration);
-        }
-    });
+    if (progressBar) {
+        progressBar.addEventListener('click', (e) => {
+            const rect = progressBar.getBoundingClientRect();
+            const clickX = e.clientX - rect.left;
+            const width = rect.width;
+            const clickTime = (clickX / width) * video.duration;
+            video.currentTime = clickTime;
+        });
+    }
     
     video.addEventListener('ended', () => {
-        isPlaying = false;
-        playBtn.classList.remove('playing');
-        videoContainer?.classList.remove('playing');
-        if (progressBar) progressBar.style.width = '0%';
+        playOverlay.classList.remove('hidden');
+        if (progressIndicators) {
+            progressIndicators.classList.remove('visible');
+        }
+        if (progressFill) {
+            progressFill.style.width = '0%';
+        }
+        if (currentTimeDisplay) {
+            currentTimeDisplay.textContent = '0:00';
+        }
     });
     
-    video.addEventListener('error', showVideoError);
+    video.addEventListener('error', () => {
+        showVideoError();
+    });
 }
 
 function formatTime(seconds) {
@@ -1036,11 +1395,13 @@ function formatTime(seconds) {
 }
 
 function showVideoError() {
-    const videoContainer = document.querySelector('.videos__player-container');
-    if (videoContainer) {
-        videoContainer.innerHTML = `
-            <div class="video-error">
-                <p>Error cargando el video. <a href="./assets/StarFlex.mp4" target="_blank">Ver video</a></p>
+    const playOverlay = document.getElementById('play-overlay');
+    if (playOverlay) {
+        playOverlay.innerHTML = `
+            <div class="videos__error">
+                <div class="videos__error-icon">⚠️</div>
+                <div class="videos__error-text">Error al cargar el video</div>
+                <div class="videos__error-subtitle">Por favor, intenta recargar la página</div>
             </div>
         `;
     }
@@ -1060,7 +1421,6 @@ function initializeFAQ() {
             question.addEventListener('click', () => {
                 const isActive = item.classList.contains('active');
                 
-                // Cerrar otros items
                 faqItems.forEach(otherItem => {
                     if (otherItem !== item) {
                         otherItem.classList.remove('active');
@@ -1082,102 +1442,102 @@ function initializeFAQ() {
                 }
             });
 
-            // Mejor feedback táctil en móvil
             if (isMobile) {
                 question.addEventListener('touchstart', () => {
                     question.style.transform = 'scale(0.98)';
-                });
+                }, { passive: true });
                 question.addEventListener('touchend', () => {
                     question.style.transform = '';
-                });
+                }, { passive: true });
             }
         }
     });
     
-    // Funcionalidad de búsqueda
     if (searchInput) {
         searchInput.addEventListener('input', debounce((e) => {
             const searchTerm = e.target.value.toLowerCase().trim();
             let visibleItems = 0;
             
             faqItems.forEach(item => {
-                const question = item.querySelector('.faq__question-text');
-                const answer = item.querySelector('.faq__answer-text');
+                const questionText = item.querySelector('.faq__question-text');
+                const answerText = item.querySelector('.faq__answer-text');
                 
-                if (question && answer) {
-                    const questionText = question.textContent.toLowerCase();
-                    const answerText = answer.textContent.toLowerCase();
+                if (questionText && answerText) {
+                    const questionContent = questionText.textContent.toLowerCase();
+                    const answerContent = answerText.textContent.toLowerCase();
                     
-                    if (questionText.includes(searchTerm) || answerText.includes(searchTerm)) {
+                    if (searchTerm === '' ||
+                        questionContent.includes(searchTerm) ||
+                        answerContent.includes(searchTerm)) {
                         item.style.display = 'block';
                         visibleItems++;
                     } else {
                         item.style.display = 'none';
                         item.classList.remove('active');
+                        const answer = item.querySelector('.faq__answer');
+                        const question = item.querySelector('.faq__question');
+                        if (answer) answer.classList.remove('active');
+                        if (question) question.setAttribute('aria-expanded', 'false');
                     }
                 }
             });
             
             if (noResults) {
-                noResults.style.display = visibleItems === 0 && searchTerm ? 'block' : 'none';
+                if (visibleItems === 0 && searchTerm !== '') {
+                    noResults.classList.add('show');
+                } else {
+                    noResults.classList.remove('show');
+                }
             }
-        }, 300));
+        }, isMobile ? 400 : 300));
     }
 }
 
 // ===== INTERSECTION OBSERVER ULTRA-OPTIMIZADO =====
 function initializeIntersectionObserver() {
-    if (!('IntersectionObserver' in window)) return;
+    if (performanceMode) return;
     
     const observerOptions = {
-        threshold: isMobile ? 0.1 : 0.2,
-        rootMargin: isMobile ? '50px' : '100px'
+        threshold: isMobile ? 0.1 : 0.15,
+        rootMargin: isMobile ? '0px 0px -50px 0px' : '0px 0px -100px 0px'
     };
     
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
-                const element = entry.target;
-                
-                if (element.classList.contains('feature')) {
-                    animateFeature(element);
-                } else {
-                    element.classList.add('in-view');
+                entry.target.classList.add('in-view');
+                if (entry.target.classList.contains('feature')) {
+                    animateFeature(entry.target);
                 }
-                
-                observer.unobserve(element);
+                // Desconectar el elemento una vez que se ha animado
+                observer.unobserve(entry.target);
             }
         });
     }, observerOptions);
     
-    // Observar elementos
-    const elementsToObserve = document.querySelectorAll('.feature, .videos__content, .faq__item, .contact__channel');
+    const elementsToObserve = document.querySelectorAll('.feature, .faq__item, .contact__channel');
     elementsToObserve.forEach(element => {
         observer.observe(element);
     });
 }
 
 function animateFeature(feature) {
-    feature.classList.add('in-view');
+    if (performanceMode) return;
     
-    // Animar elementos internos con delay
     const content = feature.querySelector('.feature__content');
-    const phone = feature.querySelector('.feature__phone');
     
     if (content) {
-        setTimeout(() => {
-            content.classList.add('animated');
-        }, 200);
-    }
-    
-    if (phone) {
-        setTimeout(() => {
-            phone.classList.add('animated');
-        }, 400);
+        const listItems = content.querySelectorAll('.feature__list-item');
+        listItems.forEach((item, index) => {
+            setTimeout(() => {
+                item.style.opacity = '1';
+                item.style.transform = 'translateX(0)';
+            }, 200 + (index * (isMobile ? 50 : 100)));
+        });
     }
 }
 
-// ===== CARGA LAZY DE IMÁGENES ULTRA-OPTIMIZADA =====
+// ===== CONFIGURACIÓN DE LAZY LOADING ULTRA-OPTIMIZADA =====
 function setupImageLazyLoading() {
     const waitForOptimizer = () => {
         if (!imageOptimizer) {
@@ -1239,7 +1599,6 @@ function initializeHeroVideoFallback() {
     const heroFallbackImage = document.querySelector('.hero__phone-app-image');
     const heroMobileVideo = document.getElementById('hero-mobile-video');
     
-    // Configurar video móvil
     if (heroMobileVideo && isMobile) {
         heroMobileVideo.muted = true;
         heroMobileVideo.autoplay = true;
@@ -1262,16 +1621,14 @@ function initializeHeroVideoFallback() {
     
     if (!heroVideo || !heroFallbackImage) return;
     
-    // En móvil, usar siempre imagen estática para el video del teléfono
-    if (isMobile) {
+    if (isMobile || performanceMode) {
         heroVideo.style.display = 'none';
         heroFallbackImage.style.display = 'block';
         heroFallbackImage.style.zIndex = '2';
-        console.log('Video del teléfono deshabilitado en móvil, usando imagen estática');
+        console.log('Video del teléfono deshabilitado en móvil/modo rendimiento');
         return;
     }
     
-    // En desktop, intentar cargar video del teléfono
     heroVideo.muted = true;
     heroVideo.autoplay = true;
     heroVideo.loop = true;
@@ -1383,98 +1740,60 @@ function preloadCriticalResources() {
 }
 
 function handleResize() {
-    const wasMobile = isMobile;
-    isMobile = window.innerWidth <= 1023;
+    const newIsMobile = window.innerWidth <= 1023;
     
-    if (wasMobile !== isMobile) {
+    if (newIsMobile !== isMobile) {
+        isMobile = newIsMobile;
         detectDeviceCapabilities();
         
-        // Reinicializar componentes si es necesario
-        if (imageOptimizer) {
-            setupImageLazyLoading();
-        }
-        
-        // Asegurar visibilidad de secciones en móvil
-        ensureMobileSectionsVisibility();
+        setTimeout(() => {
+            updateActiveNavOnScroll();
+        }, 100);
+    }
+    
+    if (isMenuOpen && !isMobile) {
+        closeMobileMenu();
+    }
+    
+    if (isFloatingMenuOpen) {
+        closeFloatingMenu();
+    }
+    
+    if (isLanguageSwitcherOpen) {
+        closeLanguageSwitcher();
     }
 }
 
 // ===== ACCESIBILIDAD ULTRA-OPTIMIZADA =====
 function initializeAccessibility() {
-    // Mejorar navegación por teclado
-    const interactiveElements = document.querySelectorAll('button, a, input, [tabindex]');
-    
-    interactiveElements.forEach(element => {
-        element.addEventListener('focus', () => {
-            element.classList.add('keyboard-focus');
-        });
-        
-        element.addEventListener('blur', () => {
-            element.classList.remove('keyboard-focus');
-        });
-        
-        element.addEventListener('mousedown', () => {
-            element.classList.remove('keyboard-focus');
-        });
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') {
+            if (isMenuOpen) {
+                closeMobileMenu();
+            }
+            if (isFloatingMenuOpen) {
+                closeFloatingMenu();
+            }
+            if (isLanguageSwitcherOpen) {
+                closeLanguageSwitcher();
+            }
+        }
     });
     
-    // Mejorar feedback táctil en móvil
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Tab') {
+            document.body.classList.add('keyboard-navigation');
+        }
+    });
+    
+    document.addEventListener('mousedown', () => {
+        document.body.classList.remove('keyboard-navigation');
+    });
+    
     if (isMobile) {
-        const touchElements = document.querySelectorAll('button, .btn, .nav__link');
-        touchElements.forEach(element => {
-            element.addEventListener('touchstart', () => {
-                element.style.transform = 'scale(0.95)';
-            });
-            element.addEventListener('touchend', () => {
-                element.style.transform = '';
-            });
-        });
-    }
-}
-
-// ===== CORRECCIÓN CRÍTICA PARA VISIBILIDAD EN MÓVIL =====
-function ensureMobileSectionsVisibility() {
-    if (window.innerWidth <= 1023) {
-        const sections = document.querySelectorAll('.features, .videos, .faq, .contact');
-        
-        sections.forEach(section => {
-            // Forzar estilos de visibilidad
-            section.style.display = 'block';
-            section.style.visibility = 'visible';
-            section.style.opacity = '1';
-            section.style.position = 'relative';
-            section.style.zIndex = '1';
-            section.style.transform = 'none';
-            section.style.minHeight = 'auto';
-            section.style.height = 'auto';
-            section.style.overflow = 'visible';
-            
-            // Asegurar que los contenedores internos también sean visibles
-            const containers = section.querySelectorAll('.features__container, .features__grid, .videos__container, .videos__main-container, .faq__container, .contact__container, .contact__grid');
-            containers.forEach(container => {
-                container.style.display = 'block';
-                container.style.visibility = 'visible';
-                container.style.opacity = '1';
-                container.style.position = 'relative';
-                container.style.transform = 'none';
-                container.style.overflow = 'visible';
-            });
-            
-            // Configuración específica para grids
-            const featuresGrid = section.querySelector('.features__grid');
-            if (featuresGrid) {
-                featuresGrid.style.display = 'flex';
-                featuresGrid.style.flexDirection = 'column';
-            }
-            
-            const contactGrid = section.querySelector('.contact__grid');
-            if (contactGrid) {
-                contactGrid.style.display = 'grid';
-                contactGrid.style.gridTemplateColumns = '1fr';
-            }
-        });
-        
-        console.log('Visibilidad de secciones móviles asegurada');
+        document.addEventListener('touchstart', () => {
+            document.body.classList.add('touch-navigation');
+        }, { passive: true });
     }
 }
 
@@ -1502,18 +1821,8 @@ document.addEventListener('DOMContentLoaded', () => {
     
     initializePerformanceOptimizations();
     
-    // Asegurar visibilidad de secciones en móvil
-    ensureMobileSectionsVisibility();
-    
-    // También ejecutar después de un pequeño delay para asegurar que se aplique
-    setTimeout(ensureMobileSectionsVisibility, 100);
-    setTimeout(ensureMobileSectionsVisibility, 500);
-    
     console.log(`StarFlex Ultra-Optimizado - Móvil: ${isMobile}, Modo rendimiento: ${performanceMode}`);
 });
-
-// Ejecutar en resize para asegurar que se mantenga
-window.addEventListener('resize', debounce(ensureMobileSectionsVisibility, 250));
 
 // ===== MANEJO DE ERRORES ULTRA-OPTIMIZADO =====
 window.addEventListener('error', (e) => {

@@ -408,7 +408,7 @@ position: relative;
 z-index: 10;
 display: grid;
 grid-template-columns: 1.2fr 1fr;
-gap: var(--space-5xl);
+gap: var(--space-6xl);
 align-items: center;
 width: 100%;
 max-width: var(--max-hero-width);
@@ -6332,10 +6332,7 @@ border: 1px solid rgba(255, 255, 255, 0.08);
 border-radius: 25px;
 
 /* Sombras profesionales */
-box-shadow:
-    0 15px 50px rgba(0, 0, 0, 0.3),
-    0 8px 25px rgba(0, 0, 0, 0.2),
-    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+
 
 animation: contact-channel-appear 0.8s ease-out forwards;
 }
@@ -6364,24 +6361,6 @@ box-shadow:
 transform: translateY(-8px) scale(1.02);
 }
 
-/* Efecto de brillo en hover */
-.contact__channel::before {
-position: absolute;
-top: 0;
-left: -100%;
-width: 100%;
-height: 100%;
-content: '';
-background: linear-gradient(90deg,
-    transparent 0%,
-    rgba(255, 45, 85, 0.06) 30%,
-    rgba(255, 45, 85, 0.1) 50%,
-    rgba(255, 45, 85, 0.06) 70%,
-    transparent 100%
-);
-border-radius: 25px;
-transition: left 1s ease;
-}
 
 .contact__channel:hover::before {
 left: 100%;
@@ -6821,11 +6800,7 @@ opacity: 0.95;
 padding: clamp(2rem, 6vh, 4rem) var(--section-padding-x) clamp(1.5rem, 4vh, 3rem);
 }
 
-.contact__grid {
-grid-template-columns: 1fr;
-gap: var(--space-xl);
-max-width: 600px;
-}
+
 
 .contact__channel {
 padding: var(--space-2xl);
@@ -7112,205 +7087,829 @@ animation: contact-loading-spin 1s linear infinite;
 100% { transform: rotate(360deg); }
 }
 
-/* ... existing code ... */
+/* ===== MEJORAS ORGANIZACIONALES DEL NAVBAR EXISTENTE ===== */
 
-/* ===== CORRECCIÓN CRÍTICA PARA VISIBILIDAD EN MÓVIL ===== */
+/* Asegurar que el navbar tenga mejor organización y espaciado */
+.nav {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--max-content-width);
+    height: 100%;
+    padding: var(--space-md) var(--section-padding-x);
+    margin: 0 auto;
+    overflow: visible;
+    pointer-events: none;
+    gap: var(--space-2xl); /* MEJOR ESPACIADO ENTRE ELEMENTOS */
+}
+
+/* Mejorar el logo con efectos más sutiles */
+.nav__logo {
+    position: relative;
+    width: 55px;
+    height: 55px;
+    cursor: pointer;
+    image-rendering: optimize-contrast;
+    image-rendering: crisp-edges;
+    background-image: url('../assets/logo.avif');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: contain;
+    border-radius: 18px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    
+    /* MEJORA: Sombra más sutil y profesional */
+    filter: drop-shadow(0 8px 20px rgba(0, 0, 0, 0.3)) 
+           drop-shadow(0 0 15px rgba(255, 69, 105, 0.2));
+}
+
+.nav__logo:hover {
+    /* MEJORA: Hover más elegante */
+    filter: drop-shadow(0 12px 30px rgba(0, 0, 0, 0.4)) 
+           drop-shadow(0 0 25px rgba(255, 69, 105, 0.35));
+    transform: translateY(-2px) scale(1.05);
+}
+
+/* Mejorar el menú central para mejor organización */
+.nav__menu {
+    position: absolute;
+    top: 50%;
+    left: 44%;
+    width: auto;
+    max-width: calc(100vw - 500px); /* MEJORA: Más espacio para el CTA */
+    overflow: visible;
+    pointer-events: auto;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translate(-50%, -50%);
+}
+
+.nav__list {
+    position: relative;
+    display: flex;
+    gap: var(--space-md); /* MEJORA: Mejor espaciado entre enlaces */
+    align-items: center;
+    width: auto;
+    padding: var(--space-lg) var(--space-4xl);
+    overflow: hidden;
+    white-space: nowrap;
+    list-style: none;
+    background: linear-gradient(135deg,
+        rgba(15, 20, 30, 0.85) 0%,
+        rgba(21, 25, 34, 0.8) 25%,
+        rgba(18, 23, 32, 0.82) 50%,
+        rgba(21, 25, 34, 0.8) 75%,
+        rgba(15, 20, 30, 0.85) 100%
+    );
+    backdrop-filter: blur(25px) saturate(180%);
+    border: 1px solid rgba(255, 69, 105, 0.2);
+    border-radius: 60px;
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, 0.4),
+        0 8px 30px rgba(0, 0, 0, 0.3),
+        0 0 0 1px rgba(255, 69, 105, 0.15),
+        inset 0 3px 0 rgba(255, 255, 255, 0.15),
+        inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mejorar los enlaces con mejor organización */
+.nav__link {
+    position: relative;
+    z-index: 2;
+    flex-shrink: 0;
+    padding: var(--space-md) var(--space-xl); /* MEJORA: Padding más consistente */
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-secondary);
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1px; /* MEJORA: Mejor legibilidad */
+    white-space: nowrap;
+    border-radius: 30px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Mejorar el CTA para que esté más a la derecha y sea más prominente */
+.nav__cta {
+    position: relative;
+    z-index: calc(var(--navbar-z-index) + 1);
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    min-width: 280px; /* MEJORA: Más ancho garantizado */
+    padding: 0;
+    margin: 0;
+    margin-left: auto; /* MEJORA: Empujar completamente a la derecha */
+    pointer-events: auto;
+}
+
+.btn--premium {
+    position: relative;
+    min-width: 240px; /* MEJORA: Botón más ancho */
+    padding: var(--space-lg) var(--space-3xl); /* MEJORA: Más padding */
+    overflow: hidden;
+    font-family: var(--font-mono);
+    font-size: 0.9rem; /* MEJORA: Texto más legible */
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    white-space: nowrap;
+    border: 2px solid rgb(255 69 105 / 40%);
+    border-radius: 35px;
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform: translateZ(0);
+    will-change: transform, box-shadow;
+    backface-visibility: hidden;
+    
+    /* MEJORA: Gradiente más vibrante */
+    background: linear-gradient(135deg,
+        var(--starflex-crimson-dark) 0%,
+        var(--starflex-crimson) 25%,
+        var(--starflex-crimson-light) 50%,
+        var(--starflex-crimson-glow) 75%,
+        var(--starflex-crimson-bright) 100%
+    );
+    
+    /* MEJORA: Sombras más impactantes */
+    box-shadow:
+        0 12px 35px rgb(255 45 85 / 45%),
+        0 0 25px rgb(255 45 85 / 35%),
+        inset 0 2px 0 rgb(255 255 255 / 20%),
+        inset 0 -1px 0 rgb(0 0 0 / 15%);
+}
+
+.btn--premium:hover {
+    /* MEJORA: Hover más dramático */
+    border-color: rgb(255 69 105 / 70%);
+    box-shadow:
+        0 18px 50px rgb(255 45 85 / 60%),
+        0 0 35px rgb(255 45 85 / 45%),
+        0 0 60px rgb(255 45 85 / 25%),
+        inset 0 2px 0 rgb(255 255 255 / 30%),
+        inset 0 -1px 0 rgb(0 0 0 / 20%);
+    transform: translateY(-4px) scale(1.03); /* MEJORA: Más movimiento */
+}
+
+/* Mejorar el botón hamburguesa */
+.nav__toggle {
+    position: relative;
+    z-index: calc(var(--navbar-z-index) + 2);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 52px; /* MEJORA: Más grande */
+    height: 52px;
+    overflow: hidden;
+    pointer-events: auto;
+    cursor: pointer;
+    background: linear-gradient(135deg,
+        rgb(21 25 34 / 98%) 0%,
+        rgb(30 35 48 / 96%) 25%,
+        rgb(25 30 40 / 97%) 50%,
+        rgb(30 35 48 / 96%) 75%,
+        rgb(21 25 34 / 98%) 100%
+    );
+    backdrop-filter: blur(30px) saturate(180%);
+    border: 1px solid rgb(255 69 105 / 25%);
+    border-radius: 18px;
+    box-shadow:
+        0 10px 30px rgb(0 0 0 / 40%),
+        0 0 20px rgb(255 45 85 / 20%),
+        inset 0 2px 0 rgb(255 255 255 / 10%),
+        inset 0 -1px 0 rgb(0 0 0 / 20%);
+    transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+.nav__toggle:hover {
+    /* MEJORA: Hover más elegante */
+    border-color: var(--starflex-crimson-bright);
+    box-shadow:
+        0 15px 40px rgb(0 0 0 / 50%),
+        0 0 30px rgb(255 45 85 / 35%),
+        inset 0 2px 0 rgb(255 255 255 / 15%),
+        inset 0 -1px 0 rgb(0 0 0 / 30%);
+    transform: translateY(-2px) scale(1.03);
+}
+
+/* Mejorar las líneas del hamburguesa */
+.nav__toggle-line {
+    position: relative;
+    width: 28px; /* MEJORA: Líneas más largas */
+    height: 3px;
+    background: linear-gradient(90deg, 
+        #fff 0%, 
+        #f1f5f9 50%, 
+        #fff 100%
+    );
+    border-radius: 4px;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    transform-origin: center;
+    box-shadow: 0 0 12px rgb(255 255 255 / 25%); /* MEJORA: Más brillo */
+}
+
+.nav__toggle-line:not(:last-child) {
+    margin-bottom: 7px; /* MEJORA: Mejor espaciado */
+}
+
+/* Responsive mejorado con mejor organización */
+@media (width <= 1400px) {
+    .nav__menu {
+        max-width: calc(100vw - 450px); /* MEJORA: Más espacio para CTA */
+    }
+    
+    .nav__cta {
+        min-width: 250px;
+    }
+    
+    .btn--premium {
+        min-width: 200px;
+        padding: var(--space-md) var(--space-2xl);
+        font-size: 0.85rem;
+    }
+}
+
+@media (width <= 1200px) {
+    .nav__menu {
+        max-width: calc(100vw - 380px);
+    }
+    
+    .nav__list {
+        padding: var(--space-md) var(--space-3xl);
+        gap: var(--space-sm);
+    }
+    
+    .nav__link {
+        padding: var(--space-sm) var(--space-lg);
+        font-size: 0.85rem;
+    }
+    
+    .nav__cta {
+        min-width: 220px;
+    }
+    
+    .btn--premium {
+        min-width: 180px;
+        padding: var(--space-sm) var(--space-xl);
+        font-size: 0.8rem;
+    }
+}
+
 @media (width <= 1023px) {
-    /* FORZAR VISIBILIDAD DE TODAS LAS SECCIONES EN MÓVIL */
-    .features,
-    .videos,
-    .faq,
-    .contact {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        z-index: 1 !important;
-        transform: none !important;
-        min-height: auto !important;
-        height: auto !important;
-        overflow: visible !important;
+    .nav__toggle {
+        display: flex;
     }
     
-    /* ASEGURAR QUE LOS CONTENEDORES INTERNOS TAMBIÉN SEAN VISIBLES */
-    .features__container,
-    .features__grid,
-    .videos__container,
-    .videos__main-container,
-    .faq__container,
-    .contact__container,
-    .contact__grid {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-        transform: none !important;
-        overflow: visible !important;
+    .nav__cta {
+        display: none;
     }
     
-    /* CONFIGURACIÓN ESPECÍFICA PARA GRIDS EN MÓVIL */
-    .features__grid {
-        display: flex !important;
-        flex-direction: column !important;
-        gap: var(--space-2xl) !important;
-        width: 100% !important;
+    .nav__menu {
+        /* MEJORA: Drawer más organizado */
+        position: fixed;
+        top: 0;
+        left: -100%;
+        z-index: 1000;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        gap: clamp(1rem, 2.5vh, 1.25rem);
+        align-items: stretch;
+        justify-content: flex-start;
+        width: min(340px, 85vw); /* MEJORA: Drawer más ancho */
+        height: 100vh;
+        height: 100dvh;
+        padding: clamp(1.5rem, 4vw, 2rem);
+        padding-top: max(calc(env(safe-area-inset-top, 20px) + clamp(1.5rem, 4vw, 2rem)), calc(clamp(1.5rem, 4vw, 2rem) + 20px));
+        padding-bottom: max(calc(env(safe-area-inset-bottom, 20px) + clamp(1.5rem, 4vw, 2rem)), clamp(1.5rem, 4vw, 2rem));
+        overflow: hidden;
+        
+        /* MEJORA: Fondo más elegante */
+        background: linear-gradient(135deg,
+            rgba(10, 13, 20, 0.98) 0%,
+            rgba(21, 25, 34, 0.96) 25%,
+            rgba(30, 35, 48, 0.94) 50%,
+            rgba(25, 30, 40, 0.95) 75%,
+            rgba(21, 25, 34, 0.96) 100%
+        );
+        backdrop-filter: blur(35px) saturate(180%);
+        border-right: 3px solid rgba(255, 45, 85, 0.4); /* MEJORA: Borde más vibrante */
+        box-shadow:
+            0 0 80px rgba(0, 0, 0, 0.9),
+            inset 3px 0 0 rgba(255, 45, 85, 0.3),
+            inset 0 0 60px rgba(255, 45, 85, 0.1);
+        
+        transition: left 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        transform: none;
+        max-width: none;
     }
     
-    .contact__grid {
-        display: grid !important;
-        grid-template-columns: 1fr !important;
-        gap: var(--space-xl) !important;
-        width: 100% !important;
+    .nav__menu.active {
+        left: 0;
     }
     
-    /* ASEGURAR PADDING Y MÁRGENES CORRECTOS */
-    .features,
-    .videos,
-    .faq,
-    .contact {
-        padding: var(--section-padding-y) var(--section-padding-x) !important;
-        margin: 0 !important;
-        width: 100% !important;
-        max-width: 100% !important;
+    /* MEJORA: Overlay más elegante */
+    .nav__menu::before {
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: block;
+        width: 100vw;
+        height: 100vh;
+        height: 100dvh;
+        pointer-events: none;
+        visibility: hidden;
+        content: '';
+        background: linear-gradient(135deg,
+            rgba(0, 0, 0, 0.8) 0%,
+            rgba(10, 13, 20, 0.85) 100%
+        );
+        backdrop-filter: blur(12px);
+        opacity: 0;
+        transition: all 0.4s ease;
     }
     
-    /* ELEMENTOS INDIVIDUALES DE CARACTERÍSTICAS */
-    .feature {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        margin-bottom: var(--space-3xl) !important;
+    .nav__menu.active::before {
+        pointer-events: auto;
+        visibility: visible;
+        opacity: 1;
     }
     
-    .feature__content,
-    .feature__phone {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+    /* MEJORA: Lista móvil más organizada */
+    .nav__list {
+        display: flex;
+        flex: 1;
+        flex-direction: column;
+        gap: calc(clamp(1rem, 2.5vh, 1.25rem) * 0.5);
+        order: 2;
+        min-height: 0;
+        padding: 0;
+        margin: 0;
+        overflow: hidden;
+        list-style: none;
+        background: none;
+        backdrop-filter: none;
+        border: none;
+        border-radius: 0;
+        box-shadow: none;
     }
     
-    /* ELEMENTOS DE VIDEO */
-    .videos__content,
-    .videos__player-container,
-    .video-overlay {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
+    .nav__link {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        min-height: clamp(48px, 8vh, 58px); /* MEJORA: Enlaces más altos */
+        padding: clamp(1rem, 3vh, 1.25rem) clamp(1.5rem, 4.5vw, 2rem);
+        overflow: hidden;
+        font-size: clamp(0.9rem, 2.8vw, 1.1rem); /* MEJORA: Texto más grande */
+        font-weight: 600;
+        color: rgba(255, 255, 255, 0.85);
+        text-decoration: none;
+        text-transform: uppercase;
+        letter-spacing: 0.8px;
+        background: transparent;
+        border: none;
+        border-left: 4px solid transparent;
+        border-radius: 0 18px 18px 0; /* MEJORA: Bordes más redondeados */
+        transition: all 0.3s ease;
     }
-    
-    /* ELEMENTOS DE FAQ */
-    .faq__item,
-    .faq__question,
-    .faq__answer {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-    }
-    
-    /* ELEMENTOS DE CONTACTO */
-    .contact__channel {
-        display: flex !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        flex-direction: column !important;
-        margin-bottom: var(--space-xl) !important;
-    }
-    
-    /* RESETEAR CUALQUIER ANIMACIÓN QUE PUEDA CAUSAR PROBLEMAS */
-    .features *,
-    .videos *,
-    .faq *,
-    .contact * {
-        animation-play-state: running !important;
-        animation-fill-mode: forwards !important;
-    }
-    
-    /* ASEGURAR QUE NO HAY ELEMENTOS FLOTANTES QUE OCULTEN CONTENIDO */
-    .features::before,
-    .features::after,
-    .videos::before,
-    .videos::after,
-    .faq::before,
-    .faq::after,
-    .contact::before,
-    .contact::after {
-        display: none !important;
-    }
-    
-    /* CORREGIR CUALQUIER PROBLEMA DE POSICIONAMIENTO ABSOLUTO */
-    .features .feature__phone,
-    .videos .video-container,
-    .faq .faq__search,
-    .contact .contact__badge {
-        position: relative !important;
-        top: auto !important;
-        left: auto !important;
-        right: auto !important;
-        bottom: auto !important;
-    }
-    
-    /* ASEGURAR QUE LOS BADGES Y TÍTULOS SEAN VISIBLES */
-    .features__badge,
-    .videos__badge,
-    .faq__badge,
-    .contact__badge,
-    .features__title,
-    .videos__title,
-    .faq__title,
-    .contact__title {
-        display: block !important;
-        visibility: visible !important;
-        opacity: 1 !important;
-        position: relative !important;
-    }
-    
-    /* CORREGIR PROBLEMAS DE OVERFLOW HIDDEN */
-    body,
-    html,
-    .hero,
-    .features,
-    .videos,
-    .faq,
-    .contact {
-        overflow-x: hidden !important;
-        overflow-y: visible !important;
-    }
-    
-    /* ASEGURAR QUE NO HAY ELEMENTOS CON HEIGHT: 0 */
-    .features,
-    .videos,
-    .faq,
-    .contact {
-        min-height: 50vh !important;
-    }
-    
-    /* DEBUGGING: Bordes temporales para identificar secciones */
-    /* Descomenta estas líneas temporalmente para ver las secciones */
-    /*
-    .features { border: 2px solid red !important; }
-    .videos { border: 2px solid blue !important; }
-    .faq { border: 2px solid green !important; }
-    .contact { border: 2px solid yellow !important; }
-    */
 }
 
-/* REGLAS ADICIONALES PARA DISPOSITIVOS MUY PEQUEÑOS */
+/* MEJORA: Mejor espaciado en móviles pequeños */
 @media (width <= 480px) {
-    .features,
-    .videos,
-    .faq,
-    .contact {
-        padding: calc(var(--section-padding-y) * 0.7) calc(var(--section-padding-x) * 0.5) !important;
+    .nav__logo {
+        width: 45px;
+        height: 45px;
     }
     
-    .features__grid {
-        gap: var(--space-xl) !important;
+    .nav__toggle {
+        width: 48px;
+        height: 48px;
     }
     
-    .contact__grid {
-        gap: var(--space-lg) !important;
+    .nav__toggle-line {
+        width: 24px;
+        height: 2.5px;
+    }
+    
+    .nav__menu {
+        width: min(320px, 90vw); /* MEJORA: Drawer más ancho en móviles pequeños */
+        padding: clamp(1.25rem, 3.5vw, 1.5rem);
     }
 }
 
-/* ... rest of existing code ... */
+/* MEJORA: Animaciones más suaves */
+@keyframes navbar-pulse {
+    0%, 100% {
+        box-shadow:
+            0 20px 60px rgba(0, 0, 0, 0.4),
+            0 8px 30px rgba(0, 0, 0, 0.3),
+            0 0 0 1px rgba(255, 69, 105, 0.15),
+            inset 0 3px 0 rgba(255, 255, 255, 0.15),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.3);
+    }
+    50% {
+        box-shadow:
+            0 25px 70px rgba(0, 0, 0, 0.45),
+            0 12px 40px rgba(0, 0, 0, 0.35),
+            0 0 0 1px rgba(255, 69, 105, 0.25),
+            0 0 25px rgba(255, 69, 105, 0.15),
+            inset 0 3px 0 rgba(255, 255, 255, 0.2),
+            inset 0 -2px 0 rgba(0, 0, 0, 0.35);
+    }
+}
 
+/* MEJORA: Pulso más sutil en el navbar */
+.nav__list {
+    animation: navbar-pulse 8s ease-in-out infinite;
+}
+
+/* ===== SECCIÓN DE CONTACTO OPTIMIZADA ===== */
+.contact {
+position: relative;
+width: 100%;
+padding: var(--section-padding-y) var(--section-padding-x);
+overflow: hidden;
+background: linear-gradient(180deg, var(--primary-bg) 0%, var(--secondary-bg) 100%);
+}
+
+.contact::before {
+position: absolute;
+inset: 0;
+z-index: 1;
+content: '';
+background:
+radial-gradient(ellipse at 30% 20%, rgb(255 69 105 / 4%) 0%, transparent 60%),
+radial-gradient(ellipse at 70% 80%, rgb(184 0 46 / 3%) 0%, transparent 60%);
+}
+
+.contact__bg-effects {
+position: absolute;
+inset: 0;
+z-index: 1;
+pointer-events: none;
+}
+
+.contact__orb {
+position: absolute;
+filter: blur(80px);
+border-radius: 50%;
+opacity: 0.15;
+}
+
+.contact__orb--1 {
+top: 20%;
+left: 10%;
+width: 300px;
+height: 300px;
+background: radial-gradient(circle, rgb(255 69 105 / 60%) 0%, transparent 70%);
+}
+
+.contact__orb--2 {
+right: 10%;
+bottom: 20%;
+width: 250px;
+height: 250px;
+background: radial-gradient(circle, rgb(184 0 46 / 50%) 0%, transparent 70%);
+}
+
+.contact__orb--3 {
+top: 60%;
+left: 50%;
+width: 200px;
+height: 200px;
+background: radial-gradient(circle, rgb(139 92 246 / 40%) 0%, transparent 70%);
+transform: translateX(-50%);
+}
+
+.contact__header {
+position: relative;
+z-index: 3;
+margin-bottom: var(--space-5xl);
+text-align: center;
+opacity: 0;
+transform: translateY(30px);
+animation: contact-fadeIn 1s ease-out 0.2s forwards;
+}
+
+.contact__badge {
+display: inline-flex;
+gap: var(--space-sm);
+align-items: center;
+padding: var(--space-sm) var(--space-xl);
+margin-bottom: var(--space-2xl);
+font-size: 0.85rem;
+font-weight: 600;
+color: var(--starflex-red);
+text-transform: uppercase;
+letter-spacing: 1px;
+pointer-events: none;
+user-select: none;
+background: rgb(255 69 105 / 10%);
+backdrop-filter: blur(20px);
+border: 1px solid rgb(255 69 105 / 20%);
+border-radius: 30px;
+box-shadow: 0 8px 25px rgb(255 69 105 / 15%);
+}
+
+.contact__badge-icon {
+font-size: 1.2rem;
+filter: drop-shadow(0 0 8px var(--starflex-red));
+}
+
+.contact__title {
+margin-bottom: var(--space-xl);
+font-size: clamp(2.8rem, 7vw, 5rem);
+font-weight: 800;
+line-height: 0.9;
+letter-spacing: -0.02em;
+}
+
+.contact__title--main {
+display: block;
+margin-bottom: var(--space-sm);
+font-weight: 900;
+background: linear-gradient(135deg,
+#fff 0%,
+#e2e8f0 50%,
+#cbd5e1 100%
+);
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.contact__title--highlight {
+position: relative;
+display: block;
+font-weight: 900;
+background: linear-gradient(135deg,
+var(--starflex-red) 0%,
+var(--starflex-crimson-glow) 100%
+);
+filter: drop-shadow(0 0 20px rgb(255 69 105 / 30%));
+background-clip: text;
+-webkit-text-fill-color: transparent;
+}
+
+.contact__title--highlight::after {
+position: absolute;
+bottom: -8px;
+left: 50%;
+width: 60%;
+height: 3px;
+content: '';
+background: linear-gradient(90deg,
+transparent 0%,
+var(--starflex-red) 50%,
+transparent 100%
+);
+border-radius: 2px;
+opacity: 0.8;
+transform: translateX(-50%);
+}
+
+.contact__subtitle {
+max-width: 800px;
+margin: 0 auto;
+font-size: 1.25rem;
+font-weight: 400;
+line-height: 1.6;
+color: var(--text-secondary);
+}
+
+/* ===== GRID DE TARJETAS DE CONTACTO ===== */
+.contact__grid {
+position: relative;
+z-index: 3;
+display: grid;
+grid-template-columns: repeat(3, 1fr);
+gap: var(--space-2xl);
+width: 100%;
+max-width: 1200px;
+margin: 0 auto var(--space-5xl);
+overflow: hidden;
+}
+
+/* ===== TARJETAS DE CONTACTO INDIVIDUALES ===== */
+.contact__channel {
+position: relative;
+display: flex;
+flex-direction: column;
+align-items: center;
+padding: var(--space-2xl);
+text-align: center;
+cursor: pointer;
+background: rgb(255 255 255 / 2%);
+backdrop-filter: blur(10px);
+border: 1px solid rgb(255 255 255 / 5%);
+border-radius: 20px;
+opacity: 0;
+transition: all var(--transition);
+transform: translateY(40px);
+animation: contact-slideUp 0.8s ease-out forwards;
+}
+
+.contact__channel:nth-child(1) { animation-delay: 0.1s; }
+.contact__channel:nth-child(2) { animation-delay: 0.2s; }
+.contact__channel:nth-child(3) { animation-delay: 0.3s; }
+.contact__channel:nth-child(4) { animation-delay: 0.4s; }
+.contact__channel:nth-child(5) { animation-delay: 0.5s; }
+.contact__channel:nth-child(6) { animation-delay: 0.6s; }
+
+.contact__channel:hover {
+background: rgb(255 255 255 / 5%);
+border-color: rgb(255 255 255 / 10%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%);
+transform: translateY(-10px);
+}
+
+/* ===== ICONOS DE LAS TARJETAS ===== */
+.contact__channel-icon {
+position: relative;
+display: flex;
+align-items: center;
+justify-content: center;
+width: 80px;
+height: 80px;
+margin-bottom: var(--space-xl);
+border-radius: 20px;
+box-shadow: 0 10px 30px rgb(0 0 0 / 20%);
+transition: all var(--transition);
+}
+
+.contact__channel-icon svg {
+width: 36px;
+height: 36px;
+color: white;
+filter: drop-shadow(0 2px 4px rgb(0 0 0 / 30%));
+transition: all var(--transition);
+}
+
+.contact__channel:hover .contact__channel-icon {
+box-shadow: 0 15px 40px rgb(0 0 0 / 30%);
+transform: scale(1.1);
+}
+
+.contact__channel:hover .contact__channel-icon svg {
+transform: scale(1.05);
+}
+
+/* ===== ESTILOS ESPECÍFICOS POR CANAL ===== */
+.contact__channel[data-channel="whatsapp"] .contact__channel-icon {
+background: linear-gradient(135deg, #25d366 0%, #128c7e 100%);
+}
+
+.contact__channel[data-channel="whatsapp"]:hover {
+border-color: rgb(37 211 102 / 30%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 0 20px rgb(37 211 102 / 20%);
+}
+
+.contact__channel[data-channel="instagram"] .contact__channel-icon {
+background: linear-gradient(135deg, #e1306c 0%, #fd1d1d 50%, #fcb045 100%);
+}
+
+.contact__channel[data-channel="instagram"]:hover {
+border-color: rgb(225 48 108 / 30%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 0 20px rgb(225 48 108 / 20%);
+}
+
+.contact__channel[data-channel="facebook"] .contact__channel-icon {
+background: linear-gradient(135deg, #1877f2 0%, #42a5f5 100%);
+}
+
+.contact__channel[data-channel="facebook"]:hover {
+border-color: rgb(24 119 242 / 30%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 0 20px rgb(24 119 242 / 20%);
+}
+
+.contact__channel[data-channel="tiktok"] .contact__channel-icon {
+background: linear-gradient(135deg, #ff0050 0%, #000 100%);
+}
+
+.contact__channel[data-channel="tiktok"]:hover {
+border-color: rgb(255 0 80 / 30%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 0 20px rgb(255 0 80 / 20%);
+}
+
+.contact__channel[data-channel="telegram"] .contact__channel-icon {
+background: linear-gradient(135deg, #08c 0%, #229ed9 100%);
+}
+
+.contact__channel[data-channel="telegram"]:hover {
+border-color: rgb(0 136 204 / 30%);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), 0 0 20px rgb(0 136 204 / 20%);
+}
+
+.contact__channel[data-channel="email"] .contact__channel-icon {
+background: linear-gradient(135deg, var(--starflex-crimson) 0%, var(--starflex-crimson-bright) 100%);
+}
+
+.contact__channel[data-channel="email"]:hover {
+border-color: var(--border-crimson);
+box-shadow: 0 20px 40px rgb(0 0 0 / 20%), var(--glow-medium);
+}
+
+/* ===== CONTENIDO DE LAS TARJETAS ===== */
+.contact__channel-content {
+flex: 1;
+}
+
+.contact__channel-title {
+margin-bottom: var(--space-md);
+font-size: 1.4rem;
+font-weight: 700;
+color: var(--text-primary);
+transition: all var(--transition);
+}
+
+.contact__channel:hover .contact__channel-title {
+color: var(--starflex-red);
+}
+
+.contact__channel-description {
+margin-bottom: var(--space-xl);
+font-size: 1rem;
+line-height: 1.5;
+color: var(--text-muted);
+transition: all var(--transition);
+}
+
+.contact__channel:hover .contact__channel-description {
+color: var(--text-secondary);
+}
+
+.contact__channel-btn {
+display: inline-flex;
+gap: var(--space-sm);
+align-items: center;
+padding: var(--space-md) var(--space-xl);
+font-size: 0.9rem;
+font-weight: 600;
+color: var(--text-primary);
+text-decoration: none;
+text-transform: uppercase;
+letter-spacing: 0.5px;
+background: rgb(255 255 255 / 8%);
+border: 1px solid rgb(255 255 255 / 10%);
+border-radius: 25px;
+box-shadow: 0 4px 15px rgb(0 0 0 / 10%);
+transition: all var(--transition);
+}
+
+.contact__channel-btn:hover {
+color: white;
+background: var(--starflex-red);
+border-color: var(--starflex-red);
+box-shadow: 0 8px 25px rgb(255 69 105 / 30%);
+transform: translateY(-2px);
+}
+
+.contact__channel-arrow {
+font-size: 1rem;
+font-weight: bold;
+transition: all var(--transition);
+}
+
+.contact__channel-btn:hover .contact__channel-arrow {
+transform: translateX(3px);
+}
+
+/* ===== RESPONSIVE PARA MÓVILES ===== */
+@media (width <= 1024px) {
+.contact__grid {
+grid-template-columns: 1fr;
+gap: var(--space-xl);
+}
+}
+
+/* ===== ANIMACIONES ===== */
+@keyframes contact-fadeIn {
+from {
+opacity: 0;
+transform: translateY(30px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
+
+@keyframes contact-slideUp {
+from {
+opacity: 0;
+transform: translateY(40px);
+}
+to {
+opacity: 1;
+transform: translateY(0);
+}
+}
