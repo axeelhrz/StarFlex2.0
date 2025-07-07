@@ -11,6 +11,7 @@ html {
   overflow-x: hidden;
   overflow-y: auto;
   font-size: 16px;
+  overflow-x: hidden;
 }
 
 body {
@@ -24,7 +25,6 @@ body {
   background: var(--primary-bg);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  overscroll-behavior-y: contain;
 }
 
 /* ===== PREVENIR SCROLL HORIZONTAL GLOBAL ===== */
