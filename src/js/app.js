@@ -91,9 +91,9 @@ const translationData = {
         'nav-language-title': 'Idioma',
         // Hero Section
         'hero-badge': 'Next-Gen Amazon Flex Revolution',
-        'hero-title-main': 'DOMINA LOS',
-        'hero-title-highlight': 'BLOQUES DE',
-        'hero-title-amazon': 'AMAZON FLEX',
+        'hero_title--main': 'DOMINA LOS',
+        'hero_title--highlight': 'BLOQUES DE',
+        'hero_title--amazon': 'AMAZON FLEX',
         'hero-company-description': 'Somos una empresa dedicada a mejorar la experiencia laboral de los conductores de Amazon Flex permitiendo seleccionar de forma automática y eficiente los mejores bloques de su preferencia.',
         'hero-subtitle': 'Automatización inteligente de última generación que multiplica tus ganancias. La plataforma más avanzada para conductores profesionales del futuro.',
         'hero-cta-main': 'PRUEBA <strong>GRATUITA</strong>',
@@ -233,9 +233,9 @@ const translationData = {
         'nav-language-title': 'Language',
         // Hero Section
         'hero-badge': 'Next-Gen Amazon Flex Revolution',
-        'hero-title-main': 'MASTER THE',
-        'hero-title-highlight': 'AMAZON FLEX',
-        'hero-title-amazon': 'BLOCKS',
+        'hero_title--main': 'MASTER THE',
+        'hero_title--highlight': 'AMAZON FLEX',
+        'hero_title--amazon': 'BLOCKS',
         'hero-company-description': 'We are a company dedicated to improving the work experience of Amazon Flex drivers by allowing them to automatically and efficiently select the best blocks of their preference.',
         'hero-subtitle': 'Next-generation intelligent automation that multiplies your earnings. The most advanced platform for professional drivers of the future.',
         'hero-cta-main': '<strong>FREE</strong> TRIAL',
@@ -629,6 +629,16 @@ function setupLanguageToggle() {
                 switchLanguage(selectedLanguage);
             }
         });
+
+        // Mejorar feedback táctil en móvil
+        if (isMobile) {
+            button.addEventListener('touchstart', () => {
+                button.style.transform = 'scale(0.98)';
+            }, { passive: true });
+            button.addEventListener('touchend', () => {
+                button.style.transform = '';
+            }, { passive: true });
+        }
     });
 }
 
@@ -1000,7 +1010,14 @@ function initializeNavigation() {
         }
     });
     
-    if (!isMobile) {
+    // Mejorar el cierre del menú móvil
+    if (isMobile) {
+        document.addEventListener('touchstart', (e) => {
+            if (isMenuOpen && navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
+                closeMobileMenu();
+            }
+        }, { passive: true });
+    } else {
         document.addEventListener('click', (e) => {
             if (isMenuOpen && navMenu && !navMenu.contains(e.target) && !navToggle.contains(e.target)) {
                 closeMobileMenu();
@@ -1042,6 +1059,7 @@ function openMobileMenu() {
     navToggle.setAttribute('aria-expanded', 'true');
     navMenu.setAttribute('aria-hidden', 'false');
     
+    // Animaciones mejoradas para móvil
     const navLanguageMobile = navMenu.querySelector('.nav__language-mobile');
     const navLinks = navMenu.querySelectorAll('.nav__link');
     const navCtaMobile = navMenu.querySelector('.nav__cta-mobile');
@@ -1284,8 +1302,8 @@ function updateHeaderOnScroll() {
         header.classList.remove('scrolled');
     }
     
-    // Auto-hide navbar optimizado
-    if (scrollY > lastScrollY && scrollY > threshold && !isMenuOpen) {
+    // Auto-hide navbar optimizado para móvil
+    if (isMobile && scrollY > lastScrollY && scrollY > threshold && !isMenuOpen) {
         if (isNavbarVisible) {
             header.style.transform = 'translateY(-100%)';
             isNavbarVisible = false;
@@ -1863,3 +1881,4 @@ if ('serviceWorker' in navigator && !isMobile && !performanceMode) {
             });
     });
 }
+
