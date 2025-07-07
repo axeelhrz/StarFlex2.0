@@ -89,4 +89,5 @@ img, video {
 /* Limitar ancho global de body y html para evitar desbordes accidentales */
 html, body {
   max-width: 100vw;
+  overflow-x: hidden;
 }
