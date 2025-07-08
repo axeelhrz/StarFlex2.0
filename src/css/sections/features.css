@@ -80,7 +80,6 @@ background: linear-gradient(135deg,
 background-clip: text;
 -webkit-background-clip: text;
 -webkit-text-fill-color: transparent;
-filter: drop-shadow(0 0 20px rgba(255, 45, 85, 0.15));
 }
 
 /* Línea decorativa profesional */
@@ -100,7 +99,6 @@ background: linear-gradient(90deg,
 );
 border-radius: 2px;
 transform: translateX(-50%);
-box-shadow: 0 0 15px rgba(255, 45, 85, 0.3);
 }
 
 .features__subtitle {
@@ -292,9 +290,6 @@ background: linear-gradient(135deg,
     var(--starflex-red) 100%
 );
 border-radius: 50%;
-box-shadow: 
-    0 0 10px rgba(255, 45, 85, 0.3),
-    inset 0 1px 0 rgba(255, 255, 255, 0.2);
 transition: all 0.4s ease;
 }
 
@@ -323,9 +318,7 @@ background: linear-gradient(135deg,
     var(--starflex-crimson-bright) 0%,
     var(--starflex-crimson-glow) 100%
 );
-box-shadow: 
-    0 0 15px rgba(255, 45, 85, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.3);
+
 transform: scale(1.2);
 }
 
@@ -340,35 +333,20 @@ transform: translateY(40px) scale(0.9);
 transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* Contenedor del teléfono con efectos profesionales */
+/* Contenedor del teléfono SIN fondo negro */
 .phone {
 position: relative;
 width: 100%;
 height: 100%;
 overflow: hidden;
-
-/* Fondo profesional del teléfono */
-background: linear-gradient(135deg,
-    rgba(255, 45, 85, 0.02) 0%,
-    rgba(0, 0, 0, 0.98) 15%,
-    rgba(0, 0, 0, 1) 85%,
-    rgba(255, 45, 85, 0.02) 100%
-);
+background: transparent;
 border-radius: var(--phone-border-radius);
-
-/* Sombras profesionales */
-box-shadow:
-    0 25px 80px rgba(0, 0, 0, 0.4),
-    0 10px 40px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.08),
-    inset 0 1px 0 rgba(255, 255, 255, 0.1);
-
 transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 will-change: transform;
 contain: layout style paint;
 }
 
-/* Efecto de brillo profesional */
+/* Efecto de brillo profesional - SINCRONIZADO CON LA IMAGEN */
 .phone::before {
 position: absolute;
 inset: -20px;
@@ -382,7 +360,7 @@ background: radial-gradient(ellipse,
 filter: blur(25px);
 border-radius: calc(var(--phone-border-radius) + 20px);
 opacity: 0;
-transition: all 0.6s ease;
+transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 /* Estados de animación profesional */
@@ -391,28 +369,92 @@ opacity: 1;
 transform: translateY(0) scale(1);
 }
 
-.feature.in-view .phone::before {
+/* Sombras específicas por característica con delays sincronizados */
+.feature[data-feature="schedule"].in-view .phone::before {
 opacity: 0.6;
 animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.2s;
 }
 
-/* ===== PANTALLA Y CONTENIDO DEL TELÉFONO ===== */
+.feature[data-feature="stations"].in-view .phone::before {
+opacity: 0.6;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.3s;
+}
+
+.feature[data-feature="calendar"].in-view .phone::before {
+opacity: 0.6;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.4s;
+}
+
+.feature[data-feature="log"].in-view .phone::before {
+opacity: 0.6;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.5s;
+}
+
+.feature[data-feature="notifications"].in-view .phone::before {
+opacity: 0.6;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.6s;
+}
+
+.feature[data-feature="referrals"].in-view .phone::before {
+opacity: 0.6;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.7s;
+}
+
+/* ===== PANTALLA Y CONTENIDO DEL TELÉFONO SIN FONDO NEGRO ===== */
 .phone__screen {
 position: relative;
 width: 100%;
 height: 100%;
 overflow: hidden;
-background: #000;
+background: transparent;
 border: 1px solid rgba(255, 255, 255, 0.08);
 border-radius: var(--phone-border-radius);
+opacity: 0;
+transition: all 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
 .phone__content {
 width: 100%;
 height: 100%;
 overflow: hidden;
-background: #000;
 border-radius: var(--phone-border-radius);
+}
+
+/* Sincronizar la aparición del borde con la imagen */
+.feature[data-feature="schedule"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.2s;
+}
+
+.feature[data-feature="stations"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.3s;
+}
+
+.feature[data-feature="calendar"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.4s;
+}
+
+.feature[data-feature="log"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.5s;
+}
+
+.feature[data-feature="notifications"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.6s;
+}
+
+.feature[data-feature="referrals"].in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.7s;
 }
 
 /* ===== IMÁGENES DE APLICACIÓN PROFESIONALES ===== */
@@ -477,29 +519,6 @@ transition-delay: 0.7s;
 }
 
 /* ===== EFECTOS ESPECÍFICOS POR CARACTERÍSTICA ===== */
-.feature[data-feature="schedule"] .phone {
-filter: drop-shadow(0 0 30px rgba(255, 45, 85, 0.15));
-}
-
-.feature[data-feature="stations"] .phone {
-filter: drop-shadow(0 0 30px rgba(255, 107, 53, 0.15));
-}
-
-.feature[data-feature="calendar"] .phone {
-filter: drop-shadow(0 0 30px rgba(255, 23, 68, 0.15));
-}
-
-.feature[data-feature="log"] .phone {
-filter: drop-shadow(0 0 30px rgba(184, 0, 46, 0.15));
-}
-
-.feature[data-feature="notifications"] .phone {
-filter: drop-shadow(0 0 30px rgba(255, 69, 105, 0.15));
-}
-
-.feature[data-feature="referrals"] .phone {
-filter: drop-shadow(0 0 30px rgba(255, 45, 85, 0.18));
-}
 
 /* ===== RESPONSIVE PROFESIONAL PARA MÓVIL ===== */
 @media (width <= 1023px) {
@@ -571,6 +590,18 @@ margin-bottom: var(--space-md);
 .feature__list-item:hover {
 transform: translateX(4px);
 }
+
+/* Sombras y bordes móviles sincronizados */
+.feature.in-view .phone::before {
+opacity: 0.4;
+animation: phone-ambient-glow 8s ease-in-out infinite;
+transition-delay: 0.1s;
+}
+
+.feature.in-view .phone__screen {
+opacity: 1;
+transition-delay: 0.1s;
+}
 }
 
 @media (width <= 480px) {
@@ -603,6 +634,7 @@ width: 3px;
 .feature,
 .feature__phone,
 .phone__app-image,
+.phone__screen,
 .feature__list-item {
     transition: opacity 0.3s ease !important;
     transform: none !important;
@@ -615,6 +647,8 @@ width: 3px;
 
 .feature.in-view .feature__phone,
 .feature.in-view .phone__app-image,
+.feature.in-view .phone__screen,
+.feature.in-view .phone::before,
 .feature.in-view .feature__list-item {
     opacity: 1 !important;
     transform: none !important;
@@ -653,6 +687,5 @@ background:
 
 .feature__list-item::before {
 background: var(--starflex-red);
-box-shadow: 0 0 15px rgba(255, 45, 85, 0.6);
 }
 }
