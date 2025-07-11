@@ -1,4 +1,4 @@
-/* ===== NAVBAR MÓVIL COMPLETAMENTE INDEPENDIENTE - VERSIÓN COMPACTA ===== */
+/* ===== NAVBAR MÓVIL COMPLETAMENTE INDEPENDIENTE - VERSIÓN CORREGIDA ===== */
 
 /* Variables específicas para navbar móvil - optimizadas para compacidad */
 :root {
@@ -115,6 +115,7 @@
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     z-index: calc(var(--mobile-navbar-z-index) + 1);
     -webkit-tap-highlight-color: transparent;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
 }
 
 .mobile-nav__toggle-inner {
@@ -253,10 +254,12 @@
         inset 1px 0 0 rgba(255, 255, 255, 0.08);
     transition: right var(--mobile-animation-duration) var(--mobile-animation-easing);
     overflow: hidden;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea interactivo */
 }
 
 .mobile-nav__menu.active {
     right: 0;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea interactivo cuando esté activo */
 }
 
 /* ===== OVERLAY PARA CERRAR ===== */
@@ -273,6 +276,7 @@
     visibility: hidden;
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     z-index: -1;
+    pointer-events: auto;
 }
 
 .mobile-nav__menu.active .mobile-nav__overlay {
@@ -288,6 +292,7 @@
     height: 100%;
     overflow: hidden; /* Eliminar scroll */
     z-index: 2;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea interactivo */
 }
 
 /* ===== HEADER DEL MENÚ MÓVIL - COMPACTO ===== */
@@ -364,6 +369,7 @@
     cursor: pointer;
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     -webkit-tap-highlight-color: transparent;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
 }
 
 .mobile-nav__close svg {
@@ -487,6 +493,7 @@
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     overflow: hidden;
     -webkit-tap-highlight-color: transparent;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
 }
 
 .mobile-nav__language-option::before {
@@ -579,6 +586,7 @@
     overflow: hidden;
     display: flex;
     flex-direction: column;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea interactivo */
 }
 
 .mobile-nav__list {
@@ -590,19 +598,21 @@
     padding: 0 clamp(0.5rem, 1.5vw, 0.75rem);
     flex: 1;
     justify-content: center; /* Centrar verticalmente */
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea interactivo */
 }
 
+/* ===== ENLACES DE NAVEGACIÓN MÓVIL - CRÍTICO PARA FUNCIONALIDAD ===== */
 .mobile-nav__link {
     position: relative;
-    display: flex;
+    display: flex !important;
     align-items: center;
     min-height: clamp(48px, 10vw, 56px);
     padding: clamp(0.875rem, 2.5vw, 1.125rem) clamp(1.25rem, 3.5vw, 1.75rem);
     font-family: var(--font-mono);
     font-size: clamp(0.8rem, 2.2vw, 0.9rem);
     font-weight: 700;
-    color: rgba(255, 255, 255, 0.8);
-    text-decoration: none;
+    color: rgba(255, 255, 255, 0.8) !important;
+    text-decoration: none !important;
     text-transform: uppercase;
     letter-spacing: 0.8px;
     background: transparent;
@@ -611,6 +621,10 @@
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;
+    cursor: pointer !important;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
+    visibility: visible !important; /* CRÍTICO: Asegurar que sea visible */
+    opacity: 1 !important; /* CRÍTICO: Asegurar que sea visible */
 }
 
 .mobile-nav__link::before {
@@ -629,8 +643,9 @@
 }
 
 .mobile-nav__link:hover,
-.mobile-nav__link:active {
-    color: #fff;
+.mobile-nav__link:active,
+.mobile-nav__link:focus {
+    color: #fff !important;
     border-left-color: rgba(125, 65, 70, 0.6);
     background: linear-gradient(90deg,
         rgba(125, 65, 70, 0.06) 0%,
@@ -638,6 +653,7 @@
     );
     transform: translateX(6px);
     text-shadow: 0 0 6px rgba(255, 255, 255, 0.3);
+    pointer-events: auto !important; /* CRÍTICO: Mantener clickeable en hover */
 }
 
 .mobile-nav__link:hover::before,
@@ -646,7 +662,7 @@
 }
 
 .mobile-nav__link.active {
-    color: #fff;
+    color: #fff !important;
     border-left-color: rgba(125, 65, 70, 0.6);
     background: linear-gradient(90deg,
         rgba(125, 65, 70, 0.08) 0%,
@@ -727,6 +743,7 @@
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     -webkit-tap-highlight-color: transparent;
     overflow: hidden;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
 }
 
 .mobile-nav__cta-btn::before {
@@ -804,6 +821,7 @@
     border-radius: 10px;
     transition: all var(--mobile-animation-duration) var(--mobile-animation-easing);
     -webkit-tap-highlight-color: transparent;
+    pointer-events: auto !important; /* CRÍTICO: Asegurar que sea clickeable */
 }
 
 .mobile-nav__social-link svg {
@@ -843,6 +861,26 @@
     
     .mobile-header {
         display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    /* CRÍTICO: Asegurar que todos los elementos móviles sean interactivos */
+    .mobile-nav__toggle,
+    .mobile-nav__menu,
+    .mobile-nav__link,
+    .mobile-nav__language-option,
+    .mobile-nav__cta-btn,
+    .mobile-nav__close,
+    .mobile-nav__social-link {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+    }
+    
+    .mobile-nav__link {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 }
 
@@ -1363,5 +1401,52 @@ body.mobile-menu-open {
     .mobile-nav__social-link svg {
         width: clamp(10px, 2.2vw, 12px);
         height: clamp(10px, 2.2vw, 12px);
+    }
+}
+
+/* ===== ESTILOS CRÍTICOS PARA DEPURACIÓN ===== */
+@media (max-width: 1023px) {
+    /* Forzar visibilidad y funcionalidad en móvil */
+    .mobile-nav__link {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        color: rgba(255, 255, 255, 0.8) !important;
+        text-decoration: none !important;
+    }
+    
+    .mobile-nav__link:hover,
+    .mobile-nav__link:active,
+    .mobile-nav__link:focus {
+        color: #fff !important;
+        pointer-events: auto !important;
+    }
+    
+    .mobile-nav__menu {
+        pointer-events: auto !important;
+    }
+    
+    .mobile-nav__menu.active {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        right: 0 !important;
+        pointer-events: auto !important;
+    }
+    
+    .mobile-nav__toggle {
+        pointer-events: auto !important;
+        cursor: pointer !important;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+    
+    .mobile-header {
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 }
