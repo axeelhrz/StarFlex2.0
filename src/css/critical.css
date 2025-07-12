@@ -1,0 +1,510 @@
+/* Critical CSS - Estilos esenciales para el contenido visible inicialmente */
+
+/* Variables esenciales */
+:root {
+  --color-primary: #FF2D55;
+  --color-primary-dark: #E6264C;
+  --color-primary-light: #FF4D6D;
+  --color-secondary: #0A84FF;
+  --color-secondary-dark: #0970D6;
+  --color-secondary-light: #3A9FFF;
+  --color-dark: #121212;
+  --color-dark-lighter: #1E1E1E;
+  --color-light: #F5F5F7;
+  --color-light-darker: #E5E5E7;
+  --color-text: #FFFFFF;
+  --color-text-secondary: rgba(255, 255, 255, 0.7);
+  --color-text-tertiary: rgba(255, 255, 255, 0.5);
+  --color-success: #34C759;
+  --color-warning: #FF9500;
+  --color-error: #FF3B30;
+  --color-info: #5AC8FA;
+  
+  /* Gradientes */
+  --gradient-primary: linear-gradient(135deg, var(--color-primary), var(--color-primary-dark));
+  --gradient-secondary: linear-gradient(135deg, var(--color-secondary), var(--color-secondary-dark));
+  --gradient-dark: linear-gradient(135deg, var(--color-dark), var(--color-dark-lighter));
+  
+  /* Sombras */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.15);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.2);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.25);
+  --shadow-xl: 0 12px 32px rgba(0, 0, 0, 0.3);
+  
+  /* Tipografía */
+  --font-primary: 'Space Grotesk', sans-serif;
+  --font-secondary: 'Sora', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+  
+  /* Espaciado */
+  --spacing-xs: 0.25rem;
+  --spacing-sm: 0.5rem;
+  --spacing-md: 1rem;
+  --spacing-lg: 1.5rem;
+  --spacing-xl: 2rem;
+  --spacing-2xl: 3rem;
+  --spacing-3xl: 4rem;
+  
+  /* Bordes */
+  --border-radius-sm: 0.25rem;
+  --border-radius-md: 0.5rem;
+  --border-radius-lg: 1rem;
+  --border-radius-xl: 1.5rem;
+  --border-radius-full: 9999px;
+  
+  /* Transiciones */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.25s ease;
+  --transition-slow: 0.4s ease;
+  
+  /* Z-index */
+  --z-negative: -1;
+  --z-normal: 1;
+  --z-elevated: 10;
+  --z-sticky: 100;
+  --z-dropdown: 200;
+  --z-fixed: 500;
+  --z-modal: 1000;
+  --z-popover: 2000;
+  --z-tooltip: 3000;
+}
+
+/* Reset básico */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-primary);
+  background-color: var(--color-dark);
+  color: var(--color-text);
+  line-height: 1.5;
+  overflow-x: hidden;
+  min-height: 100vh;
+  position: relative;
+}
+
+img, svg {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  color: inherit;
+}
+
+/* Utilidades esenciales */
+.desktop-only {
+  display: none;
+}
+
+.mobile-only {
+  display: block;
+}
+
+@media (min-width: 1024px) {
+  .desktop-only {
+    display: block;
+  }
+  
+  .mobile-only {
+    display: none;
+  }
+}
+
+/* Fondo de canvas */
+.bg-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: var(--z-negative);
+  overflow: hidden;
+  background: var(--color-dark);
+}
+
+.nebula-layer {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(ellipse at center, rgba(29, 29, 39, 0.5) 0%, rgba(18, 18, 18, 1) 90%);
+  opacity: 0.8;
+}
+
+.light-blobs {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.light-blob-1 {
+  position: absolute;
+  top: 15%;
+  left: 10%;
+  width: 40vw;
+  height: 40vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(255, 45, 85, 0.15) 0%, rgba(255, 45, 85, 0) 70%);
+  filter: blur(60px);
+  opacity: 0.6;
+}
+
+.light-blob-2 {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 35vw;
+  height: 35vw;
+  border-radius: 50%;
+  background: radial-gradient(circle at center, rgba(10, 132, 255, 0.15) 0%, rgba(10, 132, 255, 0) 70%);
+  filter: blur(60px);
+  opacity: 0.5;
+}
+
+/* Estilos de navegación */
+.header, .mobile-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: var(--z-sticky);
+  transition: transform var(--transition-normal), background-color var(--transition-normal);
+  padding: 1rem;
+  background-color: rgba(18, 18, 18, 0.8);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.nav, .mobile-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.nav__brand, .mobile-nav__brand {
+  display: flex;
+  align-items: center;
+}
+
+.nav__logo-container, .mobile-nav__logo-container {
+  position: relative;
+  width: 40px;
+  height: 40px;
+}
+
+.nav__logo, .mobile-nav__logo {
+  width: 100%;
+  height: 100%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  position: relative;
+  z-index: 2;
+}
+
+.mobile-nav__toggle {
+  position: relative;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--border-radius-md);
+  transition: background-color var(--transition-fast);
+}
+
+.mobile-nav__toggle-inner {
+  width: 24px;
+  height: 18px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mobile-nav__toggle-line {
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-text);
+  border-radius: var(--border-radius-full);
+  transition: transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+/* Estilos de hero section */
+.hero {
+  padding-top: 80px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero__container {
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+@media (min-width: 1024px) {
+  .hero__container {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem;
+  }
+}
+
+.hero__content {
+  width: 100%;
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+@media (min-width: 1024px) {
+  .hero__content {
+    margin-bottom: 0;
+    margin-right: 2rem;
+  }
+}
+
+.hero__badge {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background-color: rgba(255, 45, 85, 0.15);
+  border-radius: var(--border-radius-full);
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.hero__title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 1.5rem;
+  font-family: var(--font-secondary);
+}
+
+@media (min-width: 768px) {
+  .hero__title {
+    font-size: 3.5rem;
+  }
+}
+
+.hero__title--main {
+  display: block;
+}
+
+.hero__title--highlight {
+  display: block;
+  color: var(--color-primary);
+}
+
+.hero__title--amazon {
+  display: block;
+}
+
+.hero__subtitle {
+  font-size: 1.125rem;
+  color: var(--color-text-secondary);
+  margin-bottom: 2rem;
+  max-width: 540px;
+}
+
+.hero__cta-group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 1.5rem;
+}
+
+@media (min-width: 768px) {
+  .hero__cta-group {
+    flex-direction: row;
+    align-items: center;
+    flex-wrap: wrap;
+  }
+}
+
+/* Estilos de botones */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-md);
+  font-weight: 600;
+  transition: transform var(--transition-fast), background-color var(--transition-fast), box-shadow var(--transition-fast);
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+
+.btn--primary {
+  background: var(--gradient-primary);
+  color: var(--color-text);
+  box-shadow: 0 4px 12px rgba(255, 45, 85, 0.3);
+}
+
+.btn--primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(255, 45, 85, 0.4);
+}
+
+.btn--primary:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 8px rgba(255, 45, 85, 0.3);
+}
+
+.btn--cta {
+  padding: 0;
+  height: 60px;
+  width: 100%;
+  max-width: 280px;
+}
+
+.hero__cta-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+.hero__cta-main span {
+  font-size: 1.125rem;
+  letter-spacing: 0.5px;
+}
+
+.hero__cta-main small {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 400;
+  margin-top: 0.25rem;
+}
+
+/* Estilos para imágenes optimizadas */
+.image-optimized {
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Estilos para el video del hero */
+.hero__phone-container {
+  position: relative;
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+.hero__phone {
+  position: relative;
+  width: 100%;
+  padding-bottom: 200%; /* Proporción aproximada de un iPhone */
+}
+
+.hero__phone-screen {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 40px;
+  overflow: hidden;
+  background-color: var(--color-dark-lighter);
+  box-shadow: var(--shadow-xl);
+}
+
+.hero__phone-content {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero__phone-video,
+.hero__phone-app-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero__mobile-video {
+  width: 100%;
+  max-width: 280px;
+  margin: 0 auto;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+
+.hero__mobile-video-player {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Estilos para el botón flotante */
+.floating-widget {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  z-index: var(--z-fixed);
+}
+
+.floating-widget__main-btn {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: transform var(--transition-fast);
+}
+
+.floating-widget__main-icon {
+  width: 24px;
+  height: 24px;
+  color: var(--color-text);
+}

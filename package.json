@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "optimize": "node optimize.js",
+    "build:css": "postcss src/css/main.css -o dist/css/main.min.css --use autoprefixer cssnano",
+    "build:critical": "postcss src/css/critical.css -o dist/css/critical.min.css --use autoprefixer cssnano",
+    "build:js": "terser src/js/app.js -o dist/js/app.min.js --compress --mangle",
+    "build:js-mobile": "terser src/js/mobile-visibility-fix.js -o dist/js/mobile-visibility-fix.min.js --compress --mangle",
+    "build": "npm run build:css && npm run build:critical && npm run build:js && npm run build:js-mobile"
   },
   "keywords": [],
   "author": "",
@@ -13,6 +19,7 @@
     "autoprefixer": "^10.4.21",
     "cssnano": "^7.0.7",
     "postcss-cli": "^11.0.1",
-    "purgecss": "^7.0.2"
+    "purgecss": "^7.0.2",
+    "terser": "^5.29.2"
   }
 }
